@@ -135,7 +135,7 @@ vac <- vac %>%
   )
 
 data.raw <- interna %>%
-  left_join(vac, by = c("mes", "ap_resid", "fe"))
+  full_join(vac, by = c("mes", "ap_resid", "fe"))
 
 
 # save data ---------------------------------------------------------------
