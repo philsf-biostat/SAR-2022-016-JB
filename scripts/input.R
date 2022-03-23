@@ -13,6 +13,7 @@ library(labelled)
 set.seed(42)
 data.raw <- tibble(id=gl(2, 10), group = gl(2, 10), outcome = rnorm(20))
 data.raw <- read_csv("dataset/srag_vac.csv")
+perfil <- read_csv("dataset/perfil.csv")
 
 Nvar_orig <- data.raw %>% ncol
 Nobs_orig <- data.raw %>% nrow

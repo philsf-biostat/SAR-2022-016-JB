@@ -40,6 +40,12 @@ vac <- bind_rows(
   filter(mes != "Total") %>%
   separate(id, into = c("dose", "fe"))
 
+p1 <- read_excel("dataset/População por AP e sexo _maior que 60 anos.xlsx") %>%
+  clean_names()
+
+p2 <- read_excel("dataset/População por AP_maior que 60.xlsx") %>%
+  clean_names()
+
 # data cleaning -----------------------------------------------------------
 
 SIVEP_Base_Internação_SRAG <- SIVEP_Base_Internação_SRAG %>% 
@@ -137,7 +143,46 @@ vac <- vac %>%
 data.raw <- interna %>%
   full_join(vac, by = c("mes", "ap_resid", "fe"))
 
+p1 <- p1 %>%
+  rename(sexo = x1) %>%
+  filter(sexo %in% c("Homens", "Mulheres")) %>%
+  select(-total)
+
+p1 <- p1 %>%
+  pivot_longer(-sexo, names_to = "ap_resid") %>%
+  mutate(
+    ap_resid = str_remove(ap_resid, "area_de_planejamento_"),
+    ap_resid = format.float(as.numeric(ap_resid)/10, digits = 1),
+    # # fix AP 1 e AP4
+    ap_resid = case_when(
+      ap_resid == "0.1" ~ "1.0",
+      ap_resid == "0.4" ~ "4.0",
+      TRUE ~ ap_resid
+    )
+  ) %>%
+  pivot_wider(names_from = sexo)
+
+p2 <- p2 %>%
+  rename(ap_resid = x1) %>%
+  filter(ap_resid != "Total") %>%
+  select(-total)
+
+p2 <- p2 %>%
+  mutate(
+    ap_resid = str_remove(ap_resid, "Área de Planejamento "),
+  ) %>%
+  transmute(
+    ap_resid,
+    f1 = x60_a_64_anos + x65_a_69_anos,
+    f2 = x70_a_74_anos + x75_a_79_anos,
+    f3 = x80_anos_ou_mais,
+    total = f1 + f2 + f3,
+  )
+
+perfil <- p1 %>%
+  full_join(p2, by = "ap_resid")
 
 # save data ---------------------------------------------------------------
 
 write_csv(data.raw, "dataset/srag_vac.csv")
+write_csv(perfil, "dataset/perfil.csv")
