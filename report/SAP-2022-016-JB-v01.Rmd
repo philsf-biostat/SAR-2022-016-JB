@@ -81,11 +81,11 @@ source("scripts/input.R", encoding = 'UTF-8')
 
 ## Dados brutos
 
-A base de dados original possuía
-`r Nvar_orig`
-variáveis coletadas de
-`r Nobs_orig`
-observações.
+<!-- A base de dados original possuía -->
+<!-- `r Nvar_orig` -->
+<!-- variáveis coletadas de -->
+<!-- `r Nobs_orig` -->
+<!-- observações. -->
 
 ## Tabela de dados analíticos
 
@@ -129,32 +129,24 @@ N/A
 
 ### Análise descritiva
 
-O perfil epidemiológico dos participantes do estudo será descrito na baseline.
+O perfil epidemiológico das AP incluídas no estudo será descrito na baseline, com os dados do Censo brasileiro de 2010.
 As características demográficas
-(sexo, idade e IMC)
-e clínicas
-<!-- ( [vars] ) -->
+(sexo e faixa etária)
 serão descritas como
-média (DP)
-<!-- mediana (IIQ) -->
-ou frequência e proporção (%), conforme apropriado.
-As distribuições das características dos participantes serão resumidas em tabelas e visualizadas em gráficos exploratórios
+total de residentes em cada AP.
+
+As tendências de vacinação e de internações em cada AP serão resumidas em tabelas e visualizadas em gráficos exploratórios.
+As curvas de tendência de internação hospitalar de cada uma das dez APs serão criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
+
+A associação entre os totais de vacinados e de internações em cada AP será mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
 
 ### Análise inferencial
 
-Todas as comparações entre os grupos serão avaliadas como análises univariadas.
-Variáveis contínuas serão comparadas entre os grupos com o
-teste t de grupos independentes com a correção de Welch.
-<!-- teste t pareado. -->
-<!-- teste de Wilcoxon. -->
-Diferenças nas distribuições de variáveis categóricas serão avaliadas com o teste
-exato de Fisher.
-<!-- qui-quadrado. -->
-<!-- McNemar. -->
-
-<!-- Todas as análises inferenciais serão realizadas com base nos modelos estatísticos (descritos na próxima seção). -->
+N/A
 
 ### Modelagem estatística
+
+N/A
 
 ### Dados faltantes
 
@@ -166,8 +158,6 @@ Todas as avaliações serão realizadas como análises de casos completos.
 Todas as análises serão realizadas ao nível de significância de 5%.
 Todos os testes de hipóteses e intervalos de confiança calculados serão
 bicaudais.
-<!-- unicaudais à esquerda. -->
-<!-- unicaudais à direita. -->
 
 ## Tamanho da amostra e Poder
 
@@ -182,7 +172,6 @@ Esta análise será realizada utilizando-se o software `R` versão `r getRversio
 # Referências
 
 - **SAR-2022-016-JB-v01** -- Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
-<!-- - Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd Ed.). New York: Routledge. -->
 - Zarin DA, et al. The ClinicalTrials.gov results database -- update and key issues. N Engl J Med 2011;364:852-60 (<https://doi.org/10.1056/NEJMsa1012065>).
 - Gamble C, et al. Guidelines for the Content of Statistical Analysis Plans in Clinical Trials. JAMA. 2017;318(23):2337–2343 (<https://doi.org/10.1001/jama.2017.18556>).
 
