@@ -1,16 +1,12 @@
-# [title]
+# Associação entre vacinação de idosos e internações por COVID-19 em áreas programáticas do Rio de Janeiro/RJ em 2021
 
-Objetivo
+Correlacionar as tendências de internação hospitalar e vacinação em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
-Análise Estatística para PESSOA (LOCAL, aaaa)
+Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 
 ## Análises realizadas
 
 1. Análise descritiva
-1. Análise inferencial
-1. Análise de poder
-1. Imputação de dados faltantes
-1. Modelagem estatística
 
 ## Documentos
 
