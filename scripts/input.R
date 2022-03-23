@@ -29,7 +29,7 @@ data.raw <- data.raw %>%
 
 data.raw <- data.raw %>%
   mutate(
-    ap_resid = factor(ap_resid), # or as.character
+    ap_resid = format.float(ap_resid, digits = 1), # or as.character
   )
 
 # labels ------------------------------------------------------------------
