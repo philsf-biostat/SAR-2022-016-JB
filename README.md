@@ -1,16 +1,12 @@
-# [title]
+# Associação entre vacinação de idosos e internações por COVID-19 em áreas programáticas do Rio de Janeiro/RJ em 2021
 
-Objetivo
+Correlacionar as tendências de internação hospitalar e vacinação em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
-Análise Estatística para PESSOA (LOCAL, aaaa)
+Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 
 ## Análises realizadas
 
 1. Análise descritiva
-1. Análise inferencial
-1. Análise de poder
-1. Imputação de dados faltantes
-1. Modelagem estatística
 
 ## Documentos
 
@@ -47,14 +43,14 @@ Outras análises também podem ser vistas em:
 
 <!-- --- -->
 
-[sapviz-v01]: report/SAP-yyyy-NNN-XX-v01.md
-[sapviz-v02]: report/SAP-yyyy-NNN-XX-v02.md
-[sappdf-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAP-yyyy-NNN-XX-v01.pdf
-[sappdf-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAP-yyyy-NNN-XX-v02.pdf
+[sapviz-v01]: report/SAP-2022-016-JB-v01.md
+[sapviz-v02]: report/SAP-2022-016-JB-v02.md
+[sappdf-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAP-2022-016-JB-v01.pdf
+[sappdf-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAP-2022-016-JB-v02.pdf
 
-[reportviz-v01]: report/SAR-yyyy-NNN-XX-v01.md
-[reportviz-v02]: report/SAR-yyyy-NNN-XX-v02.md
-[pdf-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAR-yyyy-NNN-XX-v01.pdf
-[pdf-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAR-yyyy-NNN-XX-v02.pdf
-[docx-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAR-yyyy-NNN-XX-v01.docx
-[docx-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-yyyy-NNN-XX/raw/main/report/SAR-yyyy-NNN-XX-v02.docx
+[reportviz-v01]: report/SAR-2022-016-JB-v01.md
+[reportviz-v02]: report/SAR-2022-016-JB-v02.md
+[pdf-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAR-2022-016-JB-v01.pdf
+[pdf-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAR-2022-016-JB-v02.pdf
+[docx-v01]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAR-2022-016-JB-v01.docx
+[docx-v02]: https://docs.google.com/viewer?url=https://github.com/philsf-biostat/SAR-2022-016-JB/raw/main/report/SAR-2022-016-JB-v02.docx
