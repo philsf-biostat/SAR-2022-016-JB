@@ -54,6 +54,7 @@ kable(history)
 
 # Lista de abreviaturas
 
+- AP: Área programática
 - DP: desvio padrão
 - IC: intervalo de confiança
 - SRAG: Síndrome respiratória aguda grave
@@ -67,6 +68,8 @@ Correlacionar as tendências de internação hospitalar por SRAG e vacinação d
 ## Hipóteses
 
 ## Desenho do estudo
+
+Ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
 
 # Dados
 
