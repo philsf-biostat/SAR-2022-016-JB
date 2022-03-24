@@ -26,20 +26,22 @@ gg +
 gg_d1 <- analytical %>%
   group_by(ap_resid, mes, fe) %>%
   filter(dose == "d1") %>%
-  summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes)) %>%
+  summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   ggplot() +
   scale_color_brewer(palette = "Paired") +
   facet_wrap(~ ap_resid, ncol = 2) +
-  labs(subtitle = "Dose 1") +
+  labs(subtitle = "Dose 1", color = NULL) +
   theme_ff()
 
 gg_d1 +
+  # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe))
-ggsave("figures/d1_int.png", h = 16, w = 8, units = "cm")
+ggsave("figures/d1_int.png", h = 16, w = 12, units = "cm")
 
 gg_d1 +
+  scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao, color = fe))
-ggsave("figures/d1_vac.png", h = 16, w = 8, units = "cm")
+ggsave("figures/d1_vac.png", h = 16, w = 12, units = "cm")
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
