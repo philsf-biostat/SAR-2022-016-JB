@@ -1,5 +1,5 @@
 # setup -------------------------------------------------------------------
-height <- 12
+height <- 16
 width <- 12
 units <- "cm"
 
@@ -13,4 +13,13 @@ units <- "cm"
 
 # save plots --------------------------------------------------------------
 
-ggsave(filename = "figures/outcome.png", plot = gg.outcome, height = height, width = width, units = units)
+ggsave(filename = "figures/hist_int.png", plot = gg.outcome, height = height, width = width, units = units)
+ggsave(filename = "figures/hist_vac.png", plot = gg.iv, height = height, width = width, units = units)
+ggsave(filename = "figures/d1_int.png", plot = gg_d1_int, height = height, width = width, units = units)
+ggsave(filename = "figures/d1_vac.png", plot = gg_d1_vac, height = height, width = width, units = units)
+ggsave(filename = "figures/d2_int.png", plot = gg_d2_int, height = height, width = width, units = units)
+ggsave(filename = "figures/d2_vac.png", plot = gg_d2_vac, height = height, width = width, units = units)
+ggsave(filename = "figures/dr_int.png", plot = gg_dr_int, height = height, width = width, units = units)
+ggsave(filename = "figures/dr_vac.png", plot = gg_dr_vac, height = height, width = width, units = units)
+ggsave(filename = "figures/f0_int.png", plot = gg_f0_int, height = height, width = width, units = units)
+ggsave(filename = "figures/f0_vac.png", plot = gg_f0_vac, height = height, width = width, units = units)

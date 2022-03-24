@@ -54,6 +54,13 @@ kable(history)
 
 # Lista de abreviaturas
 
+- AIQ: Amplitude inter-quartil
+- AP: Área programática
+- CV: Coeficiente de variação
+- DP: desvio padrão
+- IC: intervalo de confiança
+- SRAG: Síndrome respiratória aguda grave
+
 # Contexto
 
 ## Objetivos
@@ -80,44 +87,88 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 
 ## População do estudo e acompanhamento
 
+Conforme o Censo de 2010 as diversas AP do município do Rio de Janeiro possuíam entre
+`r perfil %>% slice_min(total) %>% pull(total)`
+e
+`r perfil %>% slice_max(total) %>% pull(total)`
+idosos, a partir de 60 anos (Tabela 1).
+A AP com menor abundância de idosos era
+a AP `r perfil %>% slice_min(total) %>% pull(ap_resid)`,
+enquanto
+a AP `r perfil %>% slice_max(total) %>% pull(ap_resid)`
+possuía a maior população absoluta.
+Em termos relativos
+a AP `r pct_ap %>% slice_max(pct60) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+60-69 anos (`r pct_ap %>% slice_max(pct60) %>% pull(pct60) %>% format.pct()`),
+a AP `r pct_ap %>% slice_max(pct70) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+70-79 anos (`r pct_ap %>% slice_max(pct70) %>% pull(pct70) %>% format.pct()`)
+e a AP `r pct_ap %>% slice_max(pct80) %>% pull(ap_resid)`
+possuía a maior proporção de residentes com
+80 anos ou mais (`r pct_ap %>% slice_max(pct80) %>% pull(pct80) %>% format.pct()`).
+
 ```{r tab_desc}
 perfil %>%
-    kable(
-      col.names = c(
-        "AP",# ap_resid
-        "Homens",
-        "Mulheres",
-        f1,
-        f2,
-        f3,
-        "Total"
-      ),
-      caption = "**Tabela 1** caption"
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),# ap_resid
+      "Homens",
+      "Mulheres",
+      f1,
+      f2,
+      f3,
+      "Total"
+    ),
+    caption = "**Tabela 1** Perfil epidemiológico"
   )
 ```
 
-```{r fig0, fig.cap="**Figura 1** caption"}
-# ![Age](../figures/outcome.png)
-# knitr::include_graphics("../figures/outcome.png", error = FALSE)
+A tabela 2 mostra o esforço vacinal contra COVID-19 e as internações por SRAG para todas as AP durante o período do estudo.
+A amplitude da vacinação nas APs variou entre
+`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique()`
+e
+`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique()`
+ao longo do ano de 2021.
+A AP com maior número absoluto de vacinações aplicadas foi
+a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
+Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
+As dez AP observaram uma média mensal de
+`r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)` aplicações de vacinas
+ao longo de 2021.
+
+O maior número de internações em uma AP em um único mês foi
+`r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique()`
+observado na AP 3.3 no mês de abril.
+O menor número de internações foi
+`r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique()`
+observado nas AP 2.1 e 5.3, ambas em novembro.
+As dez AP observaram uma média mensal de 71 internações ao longo de 2021.
+
+```{r tab2}
+tab_vars %>%
+  as_kable(
+    caption = "**Tabela 2** Variáveis do estudo"
+  )
 ```
+
+Destaca-se a grande variabilidade do esforço vacinal, onde o
+DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
+é consideravalmente maior que a média.
+Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
+O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
+As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
+A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita.
+Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável.
 
 ## Associação entre internações e vacinação
 
-```{r tab_inf}
-# tab_inf %>%
-#     as_kable(
-#     caption = "**Tabela 2** caption"
-#   )
-```
-
 ### Dose 1
-
 
 ```{r fig1, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/d1_int.png", error = FALSE)
 ```
-
 
 ```{r fig2, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
@@ -125,30 +176,92 @@ knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
 ```
 
 ```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
-analytical %>%
-  filter(dose == "d1") %>%
-  group_by(ap_resid, fe) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = fe, values_from = correlacao) %>%
-  mutate(across(c(f1, f2, f3), format.float)) %>%
+tab_d1 %>%
   kable(
     col.names = c(
-      "AP",
+      attr(analytical$ap_resid, "label"),
       f1,
       f2,
       f3
     ),
-    caption = "**Tabela 1** Correlações em cada faixa etária"
+    caption = "**Tabela 3** Correlações em cada faixa etária"
   )
 ```
 
-
 ### Dose 2
 
-### Dose 3
+```{r fig3, fig.cap="**Figura 3** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d2_int.png", error = FALSE)
+```
+
+```{r fig4, fig.cap="**Figura 4** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
+```
+
+```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d2 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      f1,
+      f2,
+      f3
+    ),
+    caption = "**Tabela 4** Correlações em cada faixa etária"
+  )
+```
+
+### Dose de reforço
+
+```{r fig5, fig.cap="**Figura 5** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/dr_int.png", error = FALSE)
+```
+
+```{r fig6, fig.cap="**Figura 6** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
+```
+
+```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
+tab_dr %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      f1,
+      f2,
+      f3
+    ),
+    caption = "**Tabela 5** Correlações em cada faixa etária"
+  )
+```
 
 ## Todas as faixas etárias
+
+```{r fig7, fig.cap="**Figura 7** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f0_int.png", error = FALSE)
+```
+
+```{r fig8, fig.cap="**Figura 8** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
+```
+
+```{r tab_f0, echo=FALSE, message=FALSE, warning=FALSE}
+tab_f0 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      d1,
+      d2,
+      dr
+    ),
+    caption = "**Tabela 6** Correlações em dose"
+  )
+```
 
 # Observações e limitações
 
@@ -162,9 +275,14 @@ analytical %>%
 
 ## Análise exploratória de dados
 
-```{r A1, fig.cap="**Figura A1** Distribuição da idade na população do estudo."}
-# ![Age](../figures/distr_age.png)
-# knitr::include_graphics("../figures/distr_age.png", error = FALSE)
+```{r figA1, fig.cap="**Figura A1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_int.png", error = FALSE)
+```
+
+```{r figA2, fig.cap="**Figura A2** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 ```
 
 ## Disponibilidade

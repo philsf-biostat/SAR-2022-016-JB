@@ -26,27 +26,62 @@ lst_theme <- list(`pkgwide-str:theme_name` = "FF gtsummary theme",
 
 set_gtsummary_theme(lst_theme)
 theme_gtsummary_compact()
-# theme_gtsummary_language(language = "pt") # traduzir
+theme_gtsummary_language(language = "pt") # traduzir
+theme_gtsummary_eda()
 
 # exploratory -------------------------------------------------------------
 
 # overall description
-# analytical %>%
-#   skimr::skim()
+# analytical %>% skimr::skim()
+# perfil %>% skimr::skim()
 
-# minimum detectable effect size
-# interpret_cohens_d(0.5)
-# cohens_d(outcome ~ group, data = analytical) %>% interpret_cohens_d()
-# interpret_icc(0.7)
+pct_ap <- perfil %>%
+  transmute(
+    ap_resid,
+    pct_h = Homens / total,
+    pct60 = f1/total,
+    pct70 = f2/total,
+    pct80 = f3/total,
+  )
+
+cv <- analytical %>%
+  summarise(vac = sd(vacinacao)/mean(vacinacao), int = sd(internacoes)/mean(internacoes))
+
+# correlacoes -------------------------------------------------------------
+
+tab_d1 <- analytical %>%
+  filter(dose == "d1") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_d2 <- analytical %>%
+  filter(dose == "d2") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_dr <- analytical %>%
+  filter(dose == "dr") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_f0 <- analytical %>%
+  group_by(ap_resid, dose) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = dose, values_from = correlacao) %>%
+  mutate(across(c(d1, d2, dr), format.float))
 
 # tables ------------------------------------------------------------------
 
-# tab_desc <- analytical %>%
-#   tbl_summary(
-#     include = c(group, outcome),
-#     # by = group,
-#   ) %>%
-#   # modify_caption(caption = "**Tabela 1** Características demográficas") %>%
-#   # modify_header(label ~ "**Características dos pacientes**") %>%
-#   bold_labels() %>%
-#   modify_table_styling(columns = "label", align = "c")
+tab_vars <- analytical %>%
+  tbl_summary(include = c(vacinacao, internacoes)) %>%
+  bold_labels()
