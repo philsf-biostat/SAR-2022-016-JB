@@ -67,7 +67,6 @@ gg.outcome <- gg +
   ) +
   xlab("") +
   ylab("")
-ggsave("figures/hist_int.png", h = 16, w = 12, units = "cm")
 
 gg.iv <- gg +
   geom_histogram(aes(vacinacao+1), fill = ff.col, bins = 7) +
@@ -77,55 +76,46 @@ gg.iv <- gg +
   ) +
   xlab("") +
   ylab("")
-ggsave("figures/hist_vac.png", h = 16, w = 12, units = "cm")
 
-gg_d1 +
+gg_d1_int <- gg_d1 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$internacoes, "label"))
-ggsave("figures/d1_int.png", h = 16, w = 12, units = "cm")
 
-gg_d1 +
+gg_d1_vac <- gg_d1 +
   scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
-ggsave("figures/d1_vac.png", h = 16, w = 12, units = "cm")
 
-gg_d2 +
+gg_d2_int <- gg_d2 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$internacoes, "label"))
-ggsave("figures/d2_int.png", h = 16, w = 12, units = "cm")
 
-gg_d2 +
+gg_d2_vac <- gg_d2 +
   scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
-ggsave("figures/d2_vac.png", h = 16, w = 12, units = "cm")
 
-gg_dr +
+gg_dr_int <- gg_dr +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$internacoes, "label"))
-ggsave("figures/dr_int.png", h = 16, w = 12, units = "cm")
 
-gg_dr +
+gg_dr_vac <- gg_dr +
   scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
-ggsave("figures/dr_vac.png", h = 16, w = 12, units = "cm")
 
-gg_f0 +
+gg_f0_int <- gg_f0 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes), col = ff.col, lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$internacoes, "label"))
-ggsave("figures/f0_int.png", h = 16, w = 12, units = "cm")
 
-gg_f0 +
+gg_f0_vac <- gg_f0 +
   scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao), col = ff.col, lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
-ggsave("figures/f0_vac.png", h = 16, w = 12, units = "cm")
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
