@@ -26,7 +26,8 @@ lst_theme <- list(`pkgwide-str:theme_name` = "FF gtsummary theme",
 
 set_gtsummary_theme(lst_theme)
 theme_gtsummary_compact()
-# theme_gtsummary_language(language = "pt") # traduzir
+theme_gtsummary_language(language = "pt") # traduzir
+theme_gtsummary_eda()
 
 # exploratory -------------------------------------------------------------
 

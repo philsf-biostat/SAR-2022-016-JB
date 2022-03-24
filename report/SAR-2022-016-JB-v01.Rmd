@@ -84,7 +84,7 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 perfil %>%
     kable(
       col.names = c(
-        "AP",# ap_resid
+        attr(analytical$ap_resid, "label"),# ap_resid
         "Homens",
         "Mulheres",
         f1,
@@ -96,28 +96,14 @@ perfil %>%
   )
 ```
 
-```{r fig0, fig.cap="**Figura 1** caption"}
-# ![Age](../figures/outcome.png)
-# knitr::include_graphics("../figures/outcome.png", error = FALSE)
-```
-
 ## Associação entre internações e vacinação
 
-```{r tab_inf}
-# tab_inf %>%
-#     as_kable(
-#     caption = "**Tabela 2** caption"
-#   )
-```
-
 ### Dose 1
-
 
 ```{r fig1, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/d1_int.png", error = FALSE)
 ```
-
 
 ```{r fig2, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
@@ -134,21 +120,106 @@ analytical %>%
   mutate(across(c(f1, f2, f3), format.float)) %>%
   kable(
     col.names = c(
-      "AP",
+      attr(analytical$ap_resid, "label"),
       f1,
       f2,
       f3
     ),
-    caption = "**Tabela 1** Correlações em cada faixa etária"
+    caption = "**Tabela 2** Correlações em cada faixa etária"
   )
 ```
 
-
 ### Dose 2
 
-### Dose 3
+```{r fig3, fig.cap="**Figura 3** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d2_int.png", error = FALSE)
+```
+
+```{r fig4, fig.cap="**Figura 4** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
+```
+
+```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
+analytical %>%
+  filter(dose == "d2") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float)) %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      f1,
+      f2,
+      f3
+    ),
+    caption = "**Tabela 3** Correlações em cada faixa etária"
+  )
+```
+
+### Dose de reforço
+
+```{r fig5, fig.cap="**Figura 5** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/dr_int.png", error = FALSE)
+```
+
+```{r fig6, fig.cap="**Figura 6** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
+```
+
+```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
+analytical %>%
+  filter(dose == "dr") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float)) %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      f1,
+      f2,
+      f3
+    ),
+    caption = "**Tabela 4** Correlações em cada faixa etária"
+  )
+```
 
 ## Todas as faixas etárias
+
+```{r fig7, fig.cap="**Figura 7** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f0_int.png", error = FALSE)
+```
+
+```{r fig8, fig.cap="**Figura 8** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
+```
+
+```{r tab_f0, echo=FALSE, message=FALSE, warning=FALSE}
+analytical %>%
+  group_by(ap_resid, dose) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = dose, values_from = correlacao) %>%
+  mutate(across(c(d1, d2, dr), format.float)) %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      d1,
+      d2,
+      dr
+    ),
+    caption = "**Tabela 5** Correlações em dose"
+  )
+```
 
 # Observações e limitações
 
@@ -162,9 +233,23 @@ analytical %>%
 
 ## Análise exploratória de dados
 
-```{r A1, fig.cap="**Figura A1** Distribuição da idade na população do estudo."}
-# ![Age](../figures/distr_age.png)
-# knitr::include_graphics("../figures/distr_age.png", error = FALSE)
+```{r figA1, fig.cap="**Figura A1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_int.png", error = FALSE)
+```
+
+```{r figA2, fig.cap="**Figura A2** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
+```
+
+```{r tabA1}
+analytical %>%
+  tbl_summary(include = c(vacinacao, internacoes)) %>%
+  bold_labels() %>%
+  as_kable(
+    caption = "**Tabela A1** caption"
+  )
 ```
 
 ## Disponibilidade

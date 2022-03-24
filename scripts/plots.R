@@ -2,51 +2,135 @@
 # library(survminer)
 
 ff.col <- "steelblue" # good for single groups scale fill/color brewer
-ff.pal <- "Paired"    # good for binary groups scale fill/color brewer
+ff.pal <- "Blues"     # paleta sequencial
+facetcol <- 2
+lwd <- 1
+alpha <- NA
 
 scale_color_discrete <- function(...) scale_color_brewer(palette = ff.pal, ...)
 scale_fill_discrete <- function(...) scale_fill_brewer(palette = ff.pal, ...)
 
 gg <- analytical %>%
   ggplot() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  scale_color_brewer() +
+  scale_fill_brewer() +
   theme_ff()
-
-# plots -------------------------------------------------------------------
-
-# gg.outcome <- 
-gg +
-  geom_density(aes(internacoes, fill = dose), alpha = .8) +
-  xlab(attr(analytical$internacoes, "label")) +
-  ylab("")
-gg +
-  geom_line(aes(mes, internacoes)) +
-  xlab(attr(analytical$internacoes, "label")) +
-  ylab("")
 
 gg_d1 <- analytical %>%
   group_by(ap_resid, mes, fe) %>%
   filter(dose == "d1") %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   ggplot() +
-  scale_color_brewer(palette = "Paired") +
-  facet_wrap(~ ap_resid, ncol = 2) +
-  labs(subtitle = "Dose 1", color = NULL) +
+  scale_color_brewer() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  labs(subtitle = d1, color = NULL, x = "") +
   theme_ff()
+
+gg_d2 <- analytical %>%
+  group_by(ap_resid, mes, fe) %>%
+  filter(dose == "d2") %>%
+  summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
+  ggplot() +
+  scale_color_brewer() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  labs(subtitle = d2, color = NULL, x = "") +
+  theme_ff()
+
+gg_dr <- analytical %>%
+  group_by(ap_resid, mes, fe) %>%
+  filter(dose == "dr") %>%
+  summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
+  ggplot() +
+  scale_color_brewer() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  labs(subtitle = dr, color = NULL, x = "") +
+  xlim(range(analytical$mes)) +
+  theme_ff()
+
+gg_f0 <- analytical %>%
+  group_by(ap_resid, mes) %>%
+  summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
+  ggplot() +
+  # scale_color_brewer() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  labs(subtitle = "Todas as faixas etárias", color = NULL, x = "") +
+  theme_ff()
+
+# plots -------------------------------------------------------------------
+
+gg.outcome <- gg +
+  geom_histogram(aes(internacoes), bins = 6, fill = ff.col) +
+  # scale_x_log10(labels = scales::label_number_auto()) +
+  labs(
+    subtitle = attr(analytical$internacoes, "label"),
+  ) +
+  xlab("") +
+  ylab("")
+ggsave("figures/hist_int.png", h = 16, w = 12, units = "cm")
+
+gg.iv <- gg +
+  geom_histogram(aes(vacinacao+1), fill = ff.col, bins = 7) +
+  scale_x_log10(labels = scales::label_number_auto()) +
+  labs(
+    subtitle = attr(analytical$vacinacao, "label"),
+  ) +
+  xlab("") +
+  ylab("")
+ggsave("figures/hist_vac.png", h = 16, w = 12, units = "cm")
 
 gg_d1 +
   # scale_y_log10(labels = scales::label_number_auto()) +
-  geom_line(aes(mes, internacoes, color = fe))
+  geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$internacoes, "label"))
 ggsave("figures/d1_int.png", h = 16, w = 12, units = "cm")
 
 gg_d1 +
   scale_y_log10(labels = scales::label_number_auto()) +
-  geom_line(aes(mes, vacinacao, color = fe))
+  geom_line(aes(mes, vacinacao, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$vacinacao, "label"))
 ggsave("figures/d1_vac.png", h = 16, w = 12, units = "cm")
+
+gg_d2 +
+  # scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$internacoes, "label"))
+ggsave("figures/d2_int.png", h = 16, w = 12, units = "cm")
+
+gg_d2 +
+  scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$vacinacao, "label"))
+ggsave("figures/d2_vac.png", h = 16, w = 12, units = "cm")
+
+gg_dr +
+  # scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$internacoes, "label"))
+ggsave("figures/dr_int.png", h = 16, w = 12, units = "cm")
+
+gg_dr +
+  scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$vacinacao, "label"))
+ggsave("figures/dr_vac.png", h = 16, w = 12, units = "cm")
+
+gg_f0 +
+  # scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, internacoes), col = ff.col, lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$internacoes, "label"))
+ggsave("figures/f0_int.png", h = 16, w = 12, units = "cm")
+
+gg_f0 +
+  scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, vacinacao), col = ff.col, lwd = lwd, alpha = alpha) +
+  ylab(attr(analytical$vacinacao, "label"))
+ggsave("figures/f0_vac.png", h = 16, w = 12, units = "cm")
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
-#   geom_histogram(bins = 5, aes(outcome, y = ..count../tapply(..count.., ..PANEL.., sum)[..PANEL..]), fill = ff.col) +
+#   geom_histogram(bins = 10, aes(internacoes, y = ..count../tapply(..count.., ..PANEL.., sum)[..PANEL..]), fill = ff.col) +
 #   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
-#   xlab(attr(analytical$outcome, "label")) +
+#   xlab(attr(analytical$internacoes, "label")) +
 #   ylab("") +
-#   facet_wrap(~ group, ncol = 2)
+#   facet_wrap(~ ap_resid, ncol = facetcol)
