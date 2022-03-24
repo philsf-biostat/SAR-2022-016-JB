@@ -9,36 +9,38 @@ library(naniar)
 
 # data loading ------------------------------------------------------------
 set.seed(42)
+
+# internacoes
 SIVEP_Base_Internação_SRAG <- read_excel("dataset/SIVEP_Base_Internação_SRAG.xlsx") %>% clean_names()
 
-d1f1 <- read_csv2("dataset/60-69 D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names()
-d1f2 <- read_csv2("dataset/70-79 D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names()
-d1f3 <- read_csv2("dataset/80+ D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names()
-
-d2f1 <- read_csv2("dataset/60-69 d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
-d2f2 <- read_csv2("dataset/70-79 d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
-d2f3 <- read_csv2("dataset/80+ d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
-
-drf1 <- read_csv2("dataset/60-69 REF por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
-drf2 <- read_csv2("dataset/70-79 ref por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
-drf3 <- read_csv2("dataset/80+ ref por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names()
+# vacinacao
 
 vac <- bind_rows(
-  d1_f1 = d1f1,
-  d1_f2 = d1f2,
-  d1_f3 = d1f3,
-  d2_f1 = d2f1,
-  d2_f2 = d2f2,
-  d2_f3 = d2f3,
-  dr_f1 = drf1,
-  dr_f2 = drf2,
-  dr_f3 = drf3,
+  d1_f1 = read_csv2("dataset/60-69 D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names(),
+  d1_f2 = read_csv2("dataset/70-79 D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names(),
+  d1_f3 = read_csv2("dataset/80+ D1 por AP e mês.csv", skip = 6, n_max = 12) %>% clean_names(),
+  d2_f1 = read_csv2("dataset/60-69 d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
+  d2_f2 = read_csv2("dataset/70-79 d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
+  d2_f3 = read_csv2("dataset/80+ d2 e du por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
+  dr_f1 = read_csv2("dataset/60-69 REF por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
+  dr_f2 = read_csv2("dataset/70-79 ref por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
+  dr_f3 = read_csv2("dataset/80+ ref por ap e mes.csv", skip = 6, n_max = 12) %>% clean_names(),
   .id = "id"
   ) %>%
   rename(mes = mes_da_vacinacao) %>%
   select(-total) %>%
   filter(mes != "Total") %>%
   separate(id, into = c("dose", "fe"))
+
+# perfil
+
+# sexo
+p1 <- read_excel("dataset/População por AP e sexo _maior que 60 anos.xlsx") %>%
+  clean_names()
+
+# pop
+p2 <- read_excel("dataset/População por AP_maior que 60.xlsx") %>%
+  clean_names()
 
 # data cleaning -----------------------------------------------------------
 
@@ -107,7 +109,6 @@ interna <- SIVEP_Base_Internação_SRAG %>%
   count(fe, name = "internacoes") %>%
   ungroup()
 
-
 # padronizar mês como número, conforme base de internacoes
 vac <- vac %>%
   mutate(
@@ -134,10 +135,53 @@ vac <- vac %>%
     ap_resid = format.float(as.numeric(ap_resid)/10, digits = 1),
   )
 
+p1 <- p1 %>%
+  rename(sexo = x1) %>%
+  filter(sexo %in% c("Homens", "Mulheres")) %>%
+  select(-total)
+
+p1 <- p1 %>%
+  pivot_longer(-sexo, names_to = "ap_resid") %>%
+  mutate(
+    ap_resid = str_remove(ap_resid, "area_de_planejamento_"),
+    ap_resid = format.float(as.numeric(ap_resid)/10, digits = 1),
+    # # fix AP 1 e AP4
+    ap_resid = case_when(
+      ap_resid == "0.1" ~ "1.0",
+      ap_resid == "0.4" ~ "4.0",
+      TRUE ~ ap_resid
+    )
+  ) %>%
+  pivot_wider(names_from = sexo)
+
+p2 <- p2 %>%
+  rename(ap_resid = x1) %>%
+  filter(ap_resid != "Total") %>%
+  select(-total)
+
+p2 <- p2 %>%
+  mutate(
+    ap_resid = str_remove(ap_resid, "Área de Planejamento "),
+  ) %>%
+  transmute(
+    ap_resid,
+    f1 = x60_a_64_anos + x65_a_69_anos,
+    f2 = x70_a_74_anos + x75_a_79_anos,
+    f3 = x80_anos_ou_mais,
+    total = f1 + f2 + f3,
+  )
+
+
+# join --------------------------------------------------------------------
+
 data.raw <- interna %>%
-  left_join(vac, by = c("mes", "ap_resid", "fe"))
+  full_join(vac, by = c("mes", "ap_resid", "fe"))
+
+perfil <- p1 %>%
+  full_join(p2, by = "ap_resid")
 
 
 # save data ---------------------------------------------------------------
 
 write_csv(data.raw, "dataset/srag_vac.csv")
+write_csv(perfil, "dataset/perfil.csv")

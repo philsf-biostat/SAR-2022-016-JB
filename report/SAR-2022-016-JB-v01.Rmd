@@ -1,7 +1,7 @@
 ---
-title: "[title]"
+title: "Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021"
 subtitle: 'DOCUMENTO: SAR-2022-016-JB-v01'
-author: '**De:** Felipe Figueiredo **Para:** ___'
+author: '**De:** Felipe Figueiredo **Para:** Janaina Balmant'
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -37,7 +37,7 @@ panderOptions('table.split.table', 160)
 
 \newpage
 
-**[title]**
+**Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021**
 
 **Histórico do documento**
 
@@ -81,25 +81,74 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 ## População do estudo e acompanhamento
 
 ```{r tab_desc}
-tab_desc %>%
-    as_kable(
-    caption = "**Tabela 1** caption"
+perfil %>%
+    kable(
+      col.names = c(
+        "AP",# ap_resid
+        "Homens",
+        "Mulheres",
+        f1,
+        f2,
+        f3,
+        "Total"
+      ),
+      caption = "**Tabela 1** caption"
   )
 ```
 
-```{r fig1, fig.cap="**Figura 1** caption"}
+```{r fig0, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
 # knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```
 
-## Análise inferencial
+## Associação entre internações e vacinação
 
 ```{r tab_inf}
-tab_inf %>%
-    as_kable(
-    caption = "**Tabela 2** caption"
+# tab_inf %>%
+#     as_kable(
+#     caption = "**Tabela 2** caption"
+#   )
+```
+
+### Dose 1
+
+
+```{r fig1, fig.cap="**Figura 1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d1_int.png", error = FALSE)
+```
+
+
+```{r fig2, fig.cap="**Figura 1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
+```
+
+```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
+analytical %>%
+  filter(dose == "d1") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float)) %>%
+  kable(
+    col.names = c(
+      "AP",
+      f1,
+      f2,
+      f3
+    ),
+    caption = "**Tabela 1** Correlações em cada faixa etária"
   )
 ```
+
+
+### Dose 2
+
+### Dose 3
+
+## Todas as faixas etárias
 
 # Observações e limitações
 
@@ -107,7 +156,7 @@ tab_inf %>%
 
 # Referências
 
-- **SAP-2022-016-JB-v01** -- Plano Analítico para [title]
+- **SAP-2022-016-JB-v01** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
 
 # Apêndice
 

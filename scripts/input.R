@@ -13,6 +13,7 @@ library(labelled)
 set.seed(42)
 data.raw <- tibble(id=gl(2, 10), group = gl(2, 10), outcome = rnorm(20))
 data.raw <- read_csv("dataset/srag_vac.csv")
+perfil <- read_csv("dataset/perfil.csv")
 
 Nvar_orig <- data.raw %>% ncol
 Nobs_orig <- data.raw %>% nrow
@@ -28,15 +29,52 @@ data.raw <- data.raw %>%
 
 data.raw <- data.raw %>%
   mutate(
-    ap_resid = factor(ap_resid), # or as.character
+    ap_resid = format.float(ap_resid, digits = 1), # or as.character
+    mes = case_when(
+      mes ==  1 ~ as.Date("2021-01-01"),
+      mes ==  2 ~ as.Date("2021-02-01"),
+      mes ==  3 ~ as.Date("2021-03-01"),
+      mes ==  4 ~ as.Date("2021-04-01"),
+      mes ==  5 ~ as.Date("2021-05-01"),
+      mes ==  6 ~ as.Date("2021-06-01"),
+      mes ==  7 ~ as.Date("2021-07-01"),
+      mes ==  8 ~ as.Date("2021-08-01"),
+      mes ==  9 ~ as.Date("2021-09-01"),
+      mes == 10 ~ as.Date("2021-10-01"),
+      mes == 11 ~ as.Date("2021-11-01"),
+      mes == 12 ~ as.Date("2021-12-01"),
+    )
+  )
+
+perfil <- perfil %>%
+  mutate(
+    ap_resid = format.float(ap_resid, digits = 1), # or as.character
   )
 
 # labels ------------------------------------------------------------------
+
+f1 <- "60-69 anos"
+f2 <- "70-79 anos"
+f3 <- "80 anos ou mais"
+d1 <- "Dose 1"
+d2 <- "Dose 2 ou dose única"
+dr <- "Dose de reforço"
+
+data.raw <- data.raw %>%
+  mutate(
+    fe = factor(fe, labels = c(f1, f2, f3)),
+  )
 
 data.raw <- data.raw %>%
   set_variable_labels(
     # group = "Study group",
     # outcome = "Study outcome",
+    ap_resid = "AP",
+    mes = "Mês",
+    internacoes = "Internações por SRAG",
+    vacinacao = "Vacinação contra COVID-19",
+    dose = "Dose",
+    fe = "Faixa etária",
   )
 
 # analytical dataset ------------------------------------------------------

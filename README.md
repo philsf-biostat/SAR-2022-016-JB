@@ -1,6 +1,6 @@
-# Associação entre vacinação de idosos e internações por COVID-19 em áreas programáticas do Rio de Janeiro/RJ em 2021
+# Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
 
-Correlacionar as tendências de internação hospitalar e vacinação em idosos em cada área programática do município do Rio de Janeiro em 2021.
+Correlacionar as tendências de internação hospitalar por SRAG e vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
 Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 
