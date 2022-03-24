@@ -128,11 +128,21 @@ A amplitude da vacinação nas APs variou entre
 `r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique()`
 e
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique()`
-ao longo do ano de 2021, com
-média `r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)`.
+ao longo do ano de 2021.
 A AP com maior número absoluto de vacinações aplicadas foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
 Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
+As dez AP observaram uma média mensal de
+`r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)` aplicações de vacinas
+ao longo de 2021.
+
+O maior número de internações em uma AP em um único mês foi
+`r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique()`
+observado na AP 3.3 no mês de abril.
+O menor número de internações foi
+`r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique()`
+observado nas AP 2.1 e 5.3, ambas em novembro.
+As dez AP observaram uma média mensal de 71 internações ao longo de 2021.
 
 ```{r tab2}
 tab_vars %>%
