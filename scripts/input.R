@@ -32,7 +32,21 @@ data.raw <- data.raw %>%
     ap_resid = format.float(ap_resid, digits = 1), # or as.character
   )
 
+perfil <- perfil %>%
+  mutate(
+    ap_resid = format.float(ap_resid, digits = 1), # or as.character
+  )
+
 # labels ------------------------------------------------------------------
+
+f1 <- "60-69 anos"
+f2 <- "70-79 anos"
+f3 <- "80 anos ou mais"
+
+data.raw <- data.raw %>%
+  mutate(
+    fe = factor(fe, labels = c(f1, f2, f3)),
+  )
 
 data.raw <- data.raw %>%
   set_variable_labels(

@@ -81,10 +81,19 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 ## População do estudo e acompanhamento
 
 ```{r tab_desc}
-# tab_desc %>%
-#     as_kable(
-#     caption = "**Tabela 1** caption"
-#   )
+perfil %>%
+    kable(
+      col.names = c(
+        "AP",# ap_resid
+        "Homens",
+        "Mulheres",
+        f1,
+        f2,
+        f3,
+        "Total"
+      ),
+      caption = "**Tabela 1** caption"
+  )
 ```
 
 ```{r fig0, fig.cap="**Figura 1** caption"}
@@ -123,7 +132,13 @@ analytical %>%
   ungroup() %>%
   pivot_wider(names_from = fe, values_from = correlacao) %>%
   mutate(across(c(f1, f2, f3), format.float)) %>%
-  pander(
+  kable(
+    col.names = c(
+      "AP",
+      f1,
+      f2,
+      f3
+    ),
     caption = "**Tabela 1** Correlações em cada faixa etária"
   )
 ```

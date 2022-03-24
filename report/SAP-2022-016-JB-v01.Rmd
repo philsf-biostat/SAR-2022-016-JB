@@ -2,7 +2,7 @@
 title: "Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021"
 subtitle: 'DOCUMENTO: SAP-2022-016-JB-v01'
 author: '**De:** Felipe Figueiredo **Para:** Janaina Balmant'
-date: "`r Sys.Date()`"
+date: "2022-03-23"
 output:
   html_document:
     fig_caption: yes
