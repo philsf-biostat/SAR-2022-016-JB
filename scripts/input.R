@@ -42,6 +42,9 @@ perfil <- perfil %>%
 f1 <- "60-69 anos"
 f2 <- "70-79 anos"
 f3 <- "80 anos ou mais"
+d1 <- "Dose 1"
+d2 <- "Dose 2 ou dose única"
+dr <- "Dose de reforço"
 
 data.raw <- data.raw %>%
   mutate(
@@ -52,6 +55,12 @@ data.raw <- data.raw %>%
   set_variable_labels(
     # group = "Study group",
     # outcome = "Study outcome",
+    ap_resid = "AP",
+    mes = "Mês",
+    internacoes = "Internações por SRAG",
+    vacinacao = "Vacinação contra COVID-19",
+    dose = "Dose",
+    fe = "Faixa etária",
   )
 
 # analytical dataset ------------------------------------------------------
