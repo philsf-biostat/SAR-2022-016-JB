@@ -92,7 +92,17 @@ perfil %>%
         f3,
         "Total"
       ),
-      caption = "**Tabela 1** caption"
+      caption = "**Tabela 1** Perfil epidemiológico"
+  )
+```
+
+
+```{r tab2}
+analytical %>%
+  tbl_summary(include = c(vacinacao, internacoes)) %>%
+  bold_labels() %>%
+  as_kable(
+    caption = "**Tabela 2** Variáveis do estudo"
   )
 ```
 
@@ -125,7 +135,7 @@ analytical %>%
       f2,
       f3
     ),
-    caption = "**Tabela 2** Correlações em cada faixa etária"
+    caption = "**Tabela 3** Correlações em cada faixa etária"
   )
 ```
 
@@ -156,7 +166,7 @@ analytical %>%
       f2,
       f3
     ),
-    caption = "**Tabela 3** Correlações em cada faixa etária"
+    caption = "**Tabela 4** Correlações em cada faixa etária"
   )
 ```
 
@@ -187,7 +197,7 @@ analytical %>%
       f2,
       f3
     ),
-    caption = "**Tabela 4** Correlações em cada faixa etária"
+    caption = "**Tabela 5** Correlações em cada faixa etária"
   )
 ```
 
@@ -217,7 +227,7 @@ analytical %>%
       d2,
       dr
     ),
-    caption = "**Tabela 5** Correlações em dose"
+    caption = "**Tabela 6** Correlações em dose"
   )
 ```
 
@@ -241,15 +251,6 @@ knitr::include_graphics("../figures/hist_int.png", error = FALSE)
 ```{r figA2, fig.cap="**Figura A2** caption"}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
-```
-
-```{r tabA1}
-analytical %>%
-  tbl_summary(include = c(vacinacao, internacoes)) %>%
-  bold_labels() %>%
-  as_kable(
-    caption = "**Tabela A1** caption"
-  )
 ```
 
 ## Disponibilidade
