@@ -54,6 +54,12 @@ kable(history)
 
 # Lista de abreviaturas
 
+- AIQ: Amplitude inter-quartil
+- AP: Área programática
+- DP: desvio padrão
+- IC: intervalo de confiança
+- SRAG: Síndrome respiratória aguda grave
+
 # Contexto
 
 ## Objetivos
@@ -79,6 +85,27 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 # Resultados
 
 ## População do estudo e acompanhamento
+
+Conforme o Censo de 2010 as diversas AP do município do Rio de Janeiro possuíam entre
+`r perfil %>% slice_min(total) %>% pull(total)`
+e
+`r perfil %>% slice_max(total) %>% pull(total)`
+idosos, a partir de 60 anos (Tabela 1).
+A AP com menor abundância de idosos era
+a AP `r perfil %>% slice_min(total) %>% pull(ap_resid)`,
+enquanto
+a AP `r perfil %>% slice_max(total) %>% pull(ap_resid)`
+possuía a maior população absoluta.
+Em termos relativos
+a AP `r pct_ap %>% slice_max(pct60) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+60-69 anos (`r pct_ap %>% slice_max(pct60) %>% pull(pct60) %>% format.pct()`),
+a AP `r pct_ap %>% slice_max(pct70) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+70-79 anos (`r pct_ap %>% slice_max(pct70) %>% pull(pct70) %>% format.pct()`)
+e a AP `r pct_ap %>% slice_max(pct80) %>% pull(ap_resid)`
+possuía a maior proporção de residentes com
+80 anos ou mais (`r pct_ap %>% slice_max(pct80) %>% pull(pct80) %>% format.pct()`).
 
 ```{r tab_desc}
 perfil %>%
