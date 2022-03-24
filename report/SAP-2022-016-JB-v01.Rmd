@@ -81,11 +81,19 @@ source("scripts/input.R", encoding = 'UTF-8')
 
 ## Dados brutos
 
-<!-- A base de dados original possuía -->
-<!-- `r Nvar_orig` -->
-<!-- variáveis coletadas de -->
-<!-- `r Nobs_orig` -->
-<!-- observações. -->
+Os dados brutos de vacinação de COVID-19 e internações por SRAG foram recebidos em diversas tabelas separadas, que foram tratadas previamente à junção em uma tabela única.
+As tabelas exibiam as contagens agregadas por AP em cada mês de 2021, e havia uma tabela para cada faixa etária avaliada no estudo (60-69 anos, 70-79 anos e 80 anos ou mais).
+Os dados de internações vieram de uma ũnica tabela, enquanto os dados de vacinação estavam adicionalmente segregados em tabelas por dose do esquema vacinal ("Dose 1", "Dose 2 ou dose única" e "Dose de reforço").
+Todos os dados disponíveis foram submetidos aos critérios de inclusão e exclusão: apenas dados de residentes das APs e referentes ao ano de 2021 foram incluídos na tabela.
+Erros de codificação de dados foram corrigidos nos processos de limpeza de dados.
+No total havia uma tabela com dados de internações, nove tabelas com dados de vacinação e duas tabelas de perfil epidemiológico (por sexo e por população total).
+
+Na primeira etapa as três tabelas de cada variável, correspondendo às três faixas etárias, foram consolidadas usando o código da AP e o mês como chave de join.
+Isto resultou em uma tabela com todas as contagens de cada variável (internações e vacinação).
+Na segunda etapa as duas tabelas foram consolidadas em uma tabela única com todos os valores mensais das internações e de vacinação, estratificados por AP e por mês.
+
+Esta tabela final de dados brutos foi pós processada conforme descrito na próxima seção.
+A tabela de dados de perfil epidemiológico foi mantida separada da tabela analítica (Ver observações).
 
 ## Tabela de dados analíticos
 
