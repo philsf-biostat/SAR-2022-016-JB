@@ -32,14 +32,17 @@ theme_gtsummary_eda()
 # exploratory -------------------------------------------------------------
 
 # overall description
-# analytical %>%
-#   skimr::skim()
+# analytical %>% skimr::skim()
+# perfil %>% skimr::skim()
 
-# minimum detectable effect size
-# interpret_cohens_d(0.5)
-# cohens_d(outcome ~ group, data = analytical) %>% interpret_cohens_d()
-# interpret_icc(0.7)
-
+pct_ap <- perfil %>%
+  transmute(
+    ap_resid,
+    pct_h = Homens / total,
+    pct60 = f1/total,
+    pct70 = f2/total,
+    pct80 = f3/total,
+  )
 
 # correlacoes -------------------------------------------------------------
 
