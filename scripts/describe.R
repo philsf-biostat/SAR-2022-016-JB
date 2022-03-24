@@ -40,14 +40,42 @@ theme_gtsummary_eda()
 # cohens_d(outcome ~ group, data = analytical) %>% interpret_cohens_d()
 # interpret_icc(0.7)
 
+
+# correlacoes -------------------------------------------------------------
+
+tab_d1 <- analytical %>%
+  filter(dose == "d1") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_d2 <- analytical %>%
+  filter(dose == "d2") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_dr <- analytical %>%
+  filter(dose == "dr") %>%
+  group_by(ap_resid, fe) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = fe, values_from = correlacao) %>%
+  mutate(across(c(f1, f2, f3), format.float))
+
+tab_f0 <- analytical %>%
+  group_by(ap_resid, dose) %>%
+  summarise(correlacao = cor(internacoes, vacinacao)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = dose, values_from = correlacao) %>%
+  mutate(across(c(d1, d2, dr), format.float))
+
 # tables ------------------------------------------------------------------
 
-# tab_desc <- analytical %>%
-#   tbl_summary(
-#     include = c(group, outcome),
-#     # by = group,
-#   ) %>%
-#   # modify_caption(caption = "**Tabela 1** Características demográficas") %>%
-#   # modify_header(label ~ "**Características dos pacientes**") %>%
-#   bold_labels() %>%
-#   modify_table_styling(columns = "label", align = "c")
+tab_vars <- analytical %>%
+  tbl_summary(include = c(vacinacao, internacoes)) %>%
+  bold_labels()

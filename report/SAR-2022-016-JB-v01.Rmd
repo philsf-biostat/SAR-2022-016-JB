@@ -82,25 +82,23 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 
 ```{r tab_desc}
 perfil %>%
-    kable(
-      col.names = c(
-        attr(analytical$ap_resid, "label"),# ap_resid
-        "Homens",
-        "Mulheres",
-        f1,
-        f2,
-        f3,
-        "Total"
-      ),
-      caption = "**Tabela 1** Perfil epidemiológico"
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),# ap_resid
+      "Homens",
+      "Mulheres",
+      f1,
+      f2,
+      f3,
+      "Total"
+    ),
+    caption = "**Tabela 1** Perfil epidemiológico"
   )
 ```
 
 
 ```{r tab2}
-analytical %>%
-  tbl_summary(include = c(vacinacao, internacoes)) %>%
-  bold_labels() %>%
+tab_vars %>%
   as_kable(
     caption = "**Tabela 2** Variáveis do estudo"
   )
@@ -121,13 +119,7 @@ knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
 ```
 
 ```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
-analytical %>%
-  filter(dose == "d1") %>%
-  group_by(ap_resid, fe) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = fe, values_from = correlacao) %>%
-  mutate(across(c(f1, f2, f3), format.float)) %>%
+tab_d1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
@@ -152,13 +144,7 @@ knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
 ```
 
 ```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
-analytical %>%
-  filter(dose == "d2") %>%
-  group_by(ap_resid, fe) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = fe, values_from = correlacao) %>%
-  mutate(across(c(f1, f2, f3), format.float)) %>%
+tab_d2 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
@@ -183,13 +169,7 @@ knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
 ```
 
 ```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
-analytical %>%
-  filter(dose == "dr") %>%
-  group_by(ap_resid, fe) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = fe, values_from = correlacao) %>%
-  mutate(across(c(f1, f2, f3), format.float)) %>%
+tab_dr %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
@@ -214,12 +194,7 @@ knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
 ```
 
 ```{r tab_f0, echo=FALSE, message=FALSE, warning=FALSE}
-analytical %>%
-  group_by(ap_resid, dose) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = dose, values_from = correlacao) %>%
-  mutate(across(c(d1, d2, dr), format.float)) %>%
+tab_f0 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
