@@ -30,6 +30,20 @@ data.raw <- data.raw %>%
 data.raw <- data.raw %>%
   mutate(
     ap_resid = format.float(ap_resid, digits = 1), # or as.character
+    mes = case_when(
+      mes ==  1 ~ as.Date("2021-01-01"),
+      mes ==  2 ~ as.Date("2021-02-01"),
+      mes ==  3 ~ as.Date("2021-03-01"),
+      mes ==  4 ~ as.Date("2021-04-01"),
+      mes ==  5 ~ as.Date("2021-05-01"),
+      mes ==  6 ~ as.Date("2021-06-01"),
+      mes ==  7 ~ as.Date("2021-07-01"),
+      mes ==  8 ~ as.Date("2021-08-01"),
+      mes ==  9 ~ as.Date("2021-09-01"),
+      mes == 10 ~ as.Date("2021-10-01"),
+      mes == 11 ~ as.Date("2021-11-01"),
+      mes == 12 ~ as.Date("2021-12-01"),
+    )
   )
 
 perfil <- perfil %>%
