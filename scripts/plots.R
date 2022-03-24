@@ -70,7 +70,7 @@ gg.outcome <- gg +
 
 gg.iv <- gg +
   geom_histogram(aes(vacinacao+1), fill = ff.col, bins = 7) +
-  scale_x_log10(labels = scales::label_number_auto()) +
+  # scale_x_log10(labels = scales::label_number_auto()) +
   labs(
     subtitle = attr(analytical$vacinacao, "label"),
   ) +

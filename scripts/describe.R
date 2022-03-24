@@ -44,6 +44,9 @@ pct_ap <- perfil %>%
     pct80 = f3/total,
   )
 
+cv <- analytical %>%
+  summarise(vac = sd(vacinacao)/mean(vacinacao), int = sd(internacoes)/mean(internacoes))
+
 # correlacoes -------------------------------------------------------------
 
 tab_d1 <- analytical %>%
