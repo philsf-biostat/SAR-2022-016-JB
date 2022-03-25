@@ -51,10 +51,11 @@ gg_dr <- analytical %>%
 gg_f0 <- analytical %>%
   group_by(ap_resid, mes) %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
+  pivot_longer(c(vacinacao, internacoes)) %>%
   ggplot() +
-  # scale_color_brewer() +
+  scale_color_brewer(palette = "Set1") +
   facet_wrap(~ ap_resid, ncol = facetcol) +
-  labs(subtitle = "Todas as faixas etárias", color = NULL, x = "") +
+  labs(color = NULL, x = "") +
   theme_ff()
 
 # plots -------------------------------------------------------------------
@@ -116,6 +117,11 @@ gg_f0_vac <- gg_f0 +
   scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao), col = ff.col, lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
+
+gg_f0_int_vac <- gg_f0 +
+  scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, value, col = name)) +
+  ylab("")
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
