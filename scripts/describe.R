@@ -73,12 +73,18 @@ tab_dr <- analytical %>%
   pivot_wider(names_from = fe, values_from = correlacao) %>%
   mutate(across(c(f1, f2, f3), format.float))
 
-tab_f0 <- analytical %>%
+tab_f0_dose <- analytical %>%
   group_by(ap_resid, dose) %>%
-  summarise(correlacao = cor(internacoes, vacinacao)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = dose, values_from = correlacao) %>%
-  mutate(across(c(d1, d2, dr), format.float))
+  summarise(correlacao = cor(internacoes, vacinacao), .groups = "drop") %>%
+  pivot_wider(names_from = dose, values_from = correlacao)
+
+tab_f0_todas <- analytical %>%
+  group_by(ap_resid) %>%
+  summarise(Todas = cor(internacoes, vacinacao), .groups = "drop")
+
+tab_f0 <- tab_f0_dose %>%
+  right_join(tab_f0_todas, by = "ap_resid") %>%
+  mutate(across(c(d1, d2, dr, Todas), format.float))
 
 # tables ------------------------------------------------------------------
 

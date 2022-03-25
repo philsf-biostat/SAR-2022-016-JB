@@ -242,12 +242,12 @@ tab_dr %>%
 
 ```{r fig7, fig.cap="**Figura 7** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/f0_int.png", error = FALSE)
+knitr::include_graphics("../figures/f0_int_vac.png", error = FALSE)
 ```
 
 ```{r fig8, fig.cap="**Figura 8** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
+# knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
 ```
 
 ```{r tab_f0, echo=FALSE, message=FALSE, warning=FALSE}
@@ -257,7 +257,8 @@ tab_f0 %>%
       attr(analytical$ap_resid, "label"),
       d1,
       d2,
-      dr
+      dr,
+      "Todas as doses"
     ),
     caption = "**Tabela 6** Correlações em dose"
   )
