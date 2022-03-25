@@ -21,5 +21,6 @@ ggsave(filename = "figures/d2_int.png", plot = gg_d2_int, height = height, width
 ggsave(filename = "figures/d2_vac.png", plot = gg_d2_vac, height = height, width = width, units = units)
 ggsave(filename = "figures/dr_int.png", plot = gg_dr_int, height = height, width = width, units = units)
 ggsave(filename = "figures/dr_vac.png", plot = gg_dr_vac, height = height, width = width, units = units)
-ggsave(filename = "figures/f0_int.png", plot = gg_f0_int, height = height, width = width, units = units)
-ggsave(filename = "figures/f0_vac.png", plot = gg_f0_vac, height = height, width = width, units = units)
+# ggsave(filename = "figures/f0_int.png", plot = gg_f0_int, height = height, width = width, units = units)
+# ggsave(filename = "figures/f0_vac.png", plot = gg_f0_vac, height = height, width = width, units = units)
+ggsave(filename = "figures/f0_int_vac.png", plot = gg_f0_int_vac, height = height, width = width, units = units)
