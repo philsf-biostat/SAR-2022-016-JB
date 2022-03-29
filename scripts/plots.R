@@ -99,7 +99,7 @@ gg_d1_int <- gg_d1 +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_d1_vac <- gg_d1 +
-  scale_y_log10(labels = scales::label_number_auto()) +
+  # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
 
@@ -109,7 +109,7 @@ gg_d2_int <- gg_d2 +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_d2_vac <- gg_d2 +
-  scale_y_log10(labels = scales::label_number_auto()) +
+  # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
 
@@ -119,7 +119,7 @@ gg_dr_int <- gg_dr +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_dr_vac <- gg_dr +
-  scale_y_log10(labels = scales::label_number_auto()) +
+  # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
 
