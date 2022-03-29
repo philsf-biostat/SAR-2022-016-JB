@@ -109,7 +109,7 @@ possuía a maior proporção de residentes com
 80 anos ou mais (`r pct_ap %>% slice_max(pct80) %>% pull(pct80) %>% format.pct()`).
 
 ```{r tab_desc}
-perfil %>%
+tab_perfil %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),# ap_resid
