@@ -158,8 +158,9 @@ DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` apl
 Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
 O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
 As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
-A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita.
-Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável.
+
+A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
+<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
 
 ## Associação entre internações e vacinação
 
