@@ -79,6 +79,7 @@ tab_f0_dose <- analytical %>%
   pivot_wider(names_from = dose, values_from = correlacao)
 
 tab_f0_todas <- analytical %>%
+  filter(dose != "d1") %>%
   group_by(ap_resid) %>%
   summarise(Todas = cor(internacoes, vacinacao), .groups = "drop")
 

@@ -258,7 +258,7 @@ tab_f0 %>%
       d1,
       d2,
       dr,
-      "Todas as doses"
+      "Esquema vacinal completo (DU, D2 ou DR)"
     ),
     caption = "**Tabela 6** Correlações em dose"
   )
