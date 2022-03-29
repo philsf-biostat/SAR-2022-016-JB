@@ -48,15 +48,29 @@ gg_dr <- analytical %>%
   xlim(range(analytical$mes)) +
   theme_ff()
 
-gg_f0 <- analytical %>%
+# gg_f0 <- analytical %>%
+#   filter(dose != "d1") %>%
+#   group_by(ap_resid, mes) %>%
+#   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
+#   pivot_longer(c(vacinacao, internacoes)) %>%
+#   ggplot() +
+#   scale_color_brewer(palette = "Set1") +
+#   facet_wrap(~ ap_resid, ncol = facetcol) +
+#   labs(color = NULL, x = "") +
+#   theme_ff()
+
+gg_f0_2x <- analytical %>%
   filter(dose != "d1") %>%
   group_by(ap_resid, mes) %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
-  pivot_longer(c(vacinacao, internacoes)) %>%
-  ggplot() +
+  # pivot_longer(c(vacinacao, internacoes)) %>%
+  ggplot(aes(x = mes)) +
   scale_color_brewer(palette = "Set1") +
   facet_wrap(~ ap_resid, ncol = facetcol) +
-  labs(color = NULL, x = "") +
+  labs(
+    color = NULL,
+    x = "",
+    subtitle = "Esquema vacinal completo (DU, D2 ou DR)") +
   theme_ff()
 
 # plots -------------------------------------------------------------------
@@ -109,20 +123,31 @@ gg_dr_vac <- gg_dr +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
   ylab(attr(analytical$vacinacao, "label"))
 
-gg_f0_int <- gg_f0 +
-  # scale_y_log10(labels = scales::label_number_auto()) +
-  geom_line(aes(mes, internacoes), col = ff.col, lwd = lwd, alpha = alpha) +
-  ylab(attr(analytical$internacoes, "label"))
+# gg_f0_int <- gg_f0 +
+#   # scale_y_log10(labels = scales::label_number_auto()) +
+#   geom_line(aes(mes, internacoes), col = ff.col, lwd = lwd, alpha = alpha) +
+#   ylab(attr(analytical$internacoes, "label"))
+# 
+# gg_f0_vac <- gg_f0 +
+#   scale_y_log10(labels = scales::label_number_auto()) +
+#   geom_line(aes(mes, vacinacao), col = ff.col, lwd = lwd, alpha = alpha) +
+#   ylab(attr(analytical$vacinacao, "label"))
+# 
+# gg_f0_int_vac <- gg_f0 +
+#   scale_y_log10(labels = scales::label_number_auto()) +
+#   geom_line(aes(mes, value+1, col = name)) +
+#   ylab("")
 
-gg_f0_vac <- gg_f0 +
-  scale_y_log10(labels = scales::label_number_auto()) +
-  geom_line(aes(mes, vacinacao), col = ff.col, lwd = lwd, alpha = alpha) +
-  ylab(attr(analytical$vacinacao, "label"))
-
-gg_f0_int_vac <- gg_f0 +
-  scale_y_log10(labels = scales::label_number_auto()) +
-  geom_line(aes(mes, value, col = name)) +
-  ylab("")
+gg_f0_int_vac <- gg_f0_2x +
+  scale_y_continuous(
+    # primeiro eixo
+    name = attr(analytical$vacinacao, "label"),
+    # segundo eixo
+    sec.axis = sec_axis(~./100, name = attr(analytical$internacoes, "label"),)
+  ) +
+  geom_line(aes(y = vacinacao), color = ff.col) +
+  geom_line(aes(y = internacoes*100), color = "red") +
+  labs()
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
