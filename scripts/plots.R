@@ -49,6 +49,7 @@ gg_dr <- analytical %>%
   theme_ff()
 
 gg_f0 <- analytical %>%
+  filter(dose != "d1") %>%
   group_by(ap_resid, mes) %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   pivot_longer(c(vacinacao, internacoes)) %>%
