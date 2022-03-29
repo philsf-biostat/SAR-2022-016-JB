@@ -167,12 +167,12 @@ Para estabilizar estas distribuições, as análises das seções seguintes util
 
 ```{r fig1, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d1_int.png", error = FALSE)
+knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
 ```
 
 ```{r fig2, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
+knitr::include_graphics("../figures/d1_int.png", error = FALSE)
 ```
 
 ```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
@@ -192,12 +192,12 @@ tab_d1 %>%
 
 ```{r fig3, fig.cap="**Figura 3** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d2_int.png", error = FALSE)
+knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
 ```
 
 ```{r fig4, fig.cap="**Figura 4** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
+knitr::include_graphics("../figures/d2_int.png", error = FALSE)
 ```
 
 ```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
@@ -217,12 +217,12 @@ tab_d2 %>%
 
 ```{r fig5, fig.cap="**Figura 5** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/dr_int.png", error = FALSE)
+knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
 ```
 
 ```{r fig6, fig.cap="**Figura 6** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
+knitr::include_graphics("../figures/dr_int.png", error = FALSE)
 ```
 
 ```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
