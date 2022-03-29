@@ -238,7 +238,7 @@ tab_dr %>%
   )
 ```
 
-## Todas as faixas etárias
+## Avaliação global
 
 ```{r fig7, fig.cap="**Figura 7** caption"}
 # ![Age](../figures/outcome.png)
