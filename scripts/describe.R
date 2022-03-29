@@ -49,6 +49,18 @@ cv <- analytical %>%
 
 # correlacoes -------------------------------------------------------------
 
+tab_perfil <- perfil %>%
+  left_join(pct_ap, by = "ap_resid") %>%
+  transmute(
+    ap_resid,
+    Homens = paste0(Homens, " (", format.pct(pct_h), ")"),
+    Mulheres = paste0(Mulheres, " (", format.pct(1-pct_h), ")"),
+    f1 = paste0(f1, " (", format.pct(pct60), ")"),
+    f2 = paste0(f2, " (", format.pct(pct70), ")"),
+    f3 = paste0(f3, " (", format.pct(pct80), ")"),
+    total,
+  )
+
 tab_d1 <- analytical %>%
   filter(dose == "d1") %>%
   group_by(ap_resid, fe) %>%
@@ -79,6 +91,7 @@ tab_f0_dose <- analytical %>%
   pivot_wider(names_from = dose, values_from = correlacao)
 
 tab_f0_todas <- analytical %>%
+  filter(dose != "d1") %>%
   group_by(ap_resid) %>%
   summarise(Todas = cor(internacoes, vacinacao), .groups = "drop")
 

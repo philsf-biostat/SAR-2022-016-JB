@@ -109,7 +109,7 @@ possuía a maior proporção de residentes com
 80 anos ou mais (`r pct_ap %>% slice_max(pct80) %>% pull(pct80) %>% format.pct()`).
 
 ```{r tab_desc}
-perfil %>%
+tab_perfil %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),# ap_resid
@@ -158,8 +158,9 @@ DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` apl
 Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
 O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
 As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
-A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita.
-Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável.
+
+A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
+<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
 
 ## Associação entre internações e vacinação
 
@@ -167,12 +168,12 @@ Para estabilizar estas distribuições, as análises das seções seguintes util
 
 ```{r fig1, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d1_int.png", error = FALSE)
+knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
 ```
 
 ```{r fig2, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
+knitr::include_graphics("../figures/d1_int.png", error = FALSE)
 ```
 
 ```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
@@ -192,12 +193,12 @@ tab_d1 %>%
 
 ```{r fig3, fig.cap="**Figura 3** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d2_int.png", error = FALSE)
+knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
 ```
 
 ```{r fig4, fig.cap="**Figura 4** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
+knitr::include_graphics("../figures/d2_int.png", error = FALSE)
 ```
 
 ```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
@@ -217,12 +218,12 @@ tab_d2 %>%
 
 ```{r fig5, fig.cap="**Figura 5** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/dr_int.png", error = FALSE)
+knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
 ```
 
 ```{r fig6, fig.cap="**Figura 6** caption"}
 # ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
+knitr::include_graphics("../figures/dr_int.png", error = FALSE)
 ```
 
 ```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
@@ -238,7 +239,7 @@ tab_dr %>%
   )
 ```
 
-## Todas as faixas etárias
+## Avaliação global
 
 ```{r fig7, fig.cap="**Figura 7** caption"}
 # ![Age](../figures/outcome.png)
@@ -258,7 +259,7 @@ tab_f0 %>%
       d1,
       d2,
       dr,
-      "Todas as doses"
+      "Esquema vacinal completo (DU, D2 ou DR)"
     ),
     caption = "**Tabela 6** Correlações em dose"
   )
