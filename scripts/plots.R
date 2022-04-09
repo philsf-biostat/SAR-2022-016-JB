@@ -2,13 +2,13 @@
 # library(survminer)
 
 ff.col <- "steelblue" # good for single groups scale fill/color brewer
-ff.pal <- "Blues"     # paleta sequencial
+# ff.pal <- "Blues"     # paleta sequencial
 facetcol <- 2
 lwd <- 1
 alpha <- NA
 
-scale_color_discrete <- function(...) scale_color_brewer(palette = ff.pal, ...)
-scale_fill_discrete <- function(...) scale_fill_brewer(palette = ff.pal, ...)
+# scale_color_discrete <- function(...) scale_color_brewer(palette = ff.pal, ...)
+# scale_fill_discrete <- function(...) scale_fill_brewer(palette = ff.pal, ...)
 
 gg <- analytical %>%
   ggplot() +
@@ -22,7 +22,6 @@ gg_d1 <- analytical %>%
   filter(dose == "d1") %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   ggplot() +
-  scale_color_brewer() +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   labs(subtitle = d1, color = NULL, x = "") +
   theme_ff()
@@ -32,7 +31,6 @@ gg_d2 <- analytical %>%
   filter(dose == "d2") %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   ggplot() +
-  scale_color_brewer() +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   labs(subtitle = d2, color = NULL, x = "") +
   theme_ff()
@@ -42,7 +40,6 @@ gg_dr <- analytical %>%
   filter(dose == "dr") %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   ggplot() +
-  scale_color_brewer() +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   labs(subtitle = dr, color = NULL, x = "") +
   xlim(range(analytical$mes)) +
@@ -54,7 +51,6 @@ gg_dr <- analytical %>%
 #   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
 #   pivot_longer(c(vacinacao, internacoes)) %>%
 #   ggplot() +
-#   scale_color_brewer(palette = "Set1") +
 #   facet_wrap(~ ap_resid, ncol = facetcol) +
 #   labs(color = NULL, x = "") +
 #   theme_ff()
@@ -65,7 +61,6 @@ gg_f0_2x <- analytical %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), .groups = "drop") %>%
   # pivot_longer(c(vacinacao, internacoes)) %>%
   ggplot(aes(x = mes)) +
-  scale_color_brewer(palette = "Set1") +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   labs(
     color = NULL,
@@ -96,31 +91,37 @@ gg.iv <- gg +
 gg_d1_int <- gg_d1 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Reds") +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_d1_vac <- gg_d1 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Blues") +
   ylab(attr(analytical$vacinacao, "label"))
 
 gg_d2_int <- gg_d2 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Reds") +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_d2_vac <- gg_d2 +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Blues") +
   ylab(attr(analytical$vacinacao, "label"))
 
 gg_dr_int <- gg_dr +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Reds") +
   ylab(attr(analytical$internacoes, "label"))
 
 gg_dr_vac <- gg_dr +
   # scale_y_log10(labels = scales::label_number_auto()) +
   geom_line(aes(mes, vacinacao+1, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Blues") +
   ylab(attr(analytical$vacinacao, "label"))
 
 # gg_f0_int <- gg_f0 +
