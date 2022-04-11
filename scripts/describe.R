@@ -205,3 +205,50 @@ tab_f0_todas <- analytical %>%
 tab_f0 <- tab_f0_dose %>%
   right_join(tab_f0_todas, by = "ap_resid") %>%
   mutate(across(c(d1, d2, dr, Todas), format.float))
+
+# cobertura ---------------------------------------------------------------
+
+mrj <- perfil %>% pull(total) %>% sum
+analytical %>%
+  pivot_wider(names_from = dose, values_from = vacinacao) %>%
+  replace_na(list(dr = 0)) %>%
+  summarise(c1 = sum(d1)/mrj, c2 = sum(d2)/mrj, cr = sum(dr)/mrj) 
+
+analytical %>%
+  pivot_wider(names_from = dose, values_from = vacinacao) %>%
+  replace_na(list(dr = 0)) %>%
+  select(mes, internacoes, d1:dr) %>%
+  mutate(d1 = cumsum(d1/mrj), d2 = cumsum(d2/mrj), dr = cumsum(dr/mrj)) %>%
+  # mutate(across(d1:dr, ~ ifelse(.x <= 1, .x, 1))) %>% # censurar em 100%
+  pivot_longer(d1:dr, values_to = "cobertura", names_to = "dose") %>%
+  ggplot(aes(mes, cobertura, col = dose)) +
+  geom_line(lwd = 1) +
+  scale_color_brewer(palette = "Greens") +
+  scale_y_continuous(labels = scales::label_percent(),
+                     limits = c(0, 1.5),
+                     ) +
+  geom_hline(yintercept = 1, lty = 2) +
+  theme_ff()
+
+tx <- 100
+
+analytical %>%
+  pivot_wider(names_from = dose, values_from = vacinacao) %>%
+  select(mes, d2, internacoes) %>%
+  mutate(d2 = cumsum(d2/mrj), internacoes = internacoes/mrj*tx) %>%
+  group_by(mes) %>%
+  summarise(d2, internacoes = sum(internacoes), .groups = "drop") %>%
+  ggplot(aes(mes)) +
+  scale_y_continuous(
+    labels = scales::label_percent(),
+    # limits = c(0, 1.5),
+    sec.axis = sec_axis(~./tx, name = paste0("Internações (por ", tx, ")"),
+                        # labels = scales::label_percent(),
+                        )
+  ) +
+  geom_line(aes(y=d2), lwd = 1, col = "steelblue") +
+  geom_line(aes(y=internacoes), lwd = 1, col = "firebrick4") +
+  scale_color_brewer(palette = "Greens") +
+  geom_hline(yintercept = 1, lty = 2) +
+  labs(subtitle = "MRJ 60+ tudão") +
+  theme_ff()
