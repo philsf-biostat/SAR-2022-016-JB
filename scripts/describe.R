@@ -41,12 +41,12 @@ tab_perfil <- perfil %>%
   left_join(pct_ap, by = "ap_resid") %>%
   transmute(
     ap_resid,
-    Homens = paste0(Homens, " (", format.pct(pct_h), ")"),
-    Mulheres = paste0(Mulheres, " (", format.pct(1-pct_h), ")"),
-    f1 = paste0(f1, " (", format.pct(pct60), ")"),
-    f2 = paste0(f2, " (", format.pct(pct70), ")"),
-    f3 = paste0(f3, " (", format.pct(pct80), ")"),
-    total,
+    Homens = paste0(style_number(Homens, big.mark = ".", decimal.mark = ","), " (", format.pct(pct_h), ")"),
+    Mulheres = paste0(style_number(Mulheres, big.mark = ".", decimal.mark = ","), " (", format.pct(1-pct_h), ")"),
+    f1 = paste0(style_number(f1, big.mark = ".", decimal.mark = ","), " (", format.pct(pct60), ")"),
+    f2 = paste0(style_number(f2, big.mark = ".", decimal.mark = ","), " (", format.pct(pct70), ")"),
+    f3 = paste0(style_number(f3, big.mark = ".", decimal.mark = ","), " (", format.pct(pct80), ")"),
+    total = style_number(total, big.mark = ".", decimal.mark = ","),
   )
 
 # Tabela 2
