@@ -20,6 +20,9 @@ theme_gtsummary_eda()
 # analytical %>% skimr::skim()
 # perfil %>% skimr::skim()
 
+# pop idosos MRJ
+mrj <- perfil %>% pull(total) %>% sum
+
 pct_ap <- perfil %>%
   transmute(
     ap_resid,
@@ -205,8 +208,6 @@ tab_f0 <- tab_f0_dose %>%
 #   geom_col(aes(mes, cobertura, fill = fe), position = "dodge") +
 #   scale_y_continuous(labels = scales::label_percent()) +
 #   theme_ff()
-# 
-# mrj <- perfil %>% pull(total) %>% sum
 # 
 # analytical %>%
 #   pivot_wider(names_from = dose, values_from = vacinacao) %>%
