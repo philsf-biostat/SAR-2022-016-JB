@@ -85,7 +85,7 @@ pct_ap <- perfil %>%
 cv <- analytical %>%
   summarise(vac = sd(vacinacao)/mean(vacinacao), int = sd(internacoes)/mean(internacoes))
 
-# correlacoes -------------------------------------------------------------
+# análise descritiva ------------------------------------------------------
 
 tab_perfil <- perfil %>%
   left_join(pct_ap, by = "ap_resid") %>%
@@ -98,6 +98,13 @@ tab_perfil <- perfil %>%
     f3 = paste0(f3, " (", format.pct(pct80), ")"),
     total,
   )
+
+# Tabela 2
+tab_vars <- analytical %>%
+  tbl_summary(include = c(vacinacao, internacoes)) %>%
+  bold_labels()
+
+# Dose 1 ------------------------------------------------------------------
 
 tab_d1_f1 <- analytical %>%
   filter(dose == "d1", fe == f1) %>%
@@ -123,6 +130,8 @@ tab_d1_f3 <- analytical %>%
   distinct() %>%
   mutate(correlacao = format.float(correlacao))
 
+# Dose 2 ------------------------------------------------------------------
+
 tab_d2_f1 <- analytical %>%
   filter(dose == "d2", fe == f1) %>%
   group_by(ap_resid) %>%
@@ -146,6 +155,8 @@ tab_d2_f3 <- analytical %>%
   summarise(vacinacao = sum(vacinacao), internacoes = sum(internacoes), correlacao, .groups = "drop") %>%
   distinct() %>%
   mutate(correlacao = format.float(correlacao))
+
+# Dose R ------------------------------------------------------------------
 
 tab_dr_f1 <- analytical %>%
   filter(dose == "dr", fe == f1) %>%
@@ -179,6 +190,8 @@ tab_dr_f3 <- analytical %>%
   distinct() %>%
   mutate(correlacao = format.float(correlacao))
 
+# Avaliação Global --------------------------------------------------------
+
 tab_f0_dose <- analytical %>%
   group_by(ap_resid, dose) %>%
   summarise(correlacao = cor(internacoes, vacinacao), .groups = "drop") %>%
@@ -192,9 +205,3 @@ tab_f0_todas <- analytical %>%
 tab_f0 <- tab_f0_dose %>%
   right_join(tab_f0_todas, by = "ap_resid") %>%
   mutate(across(c(d1, d2, dr, Todas), format.float))
-
-# tables ------------------------------------------------------------------
-
-tab_vars <- analytical %>%
-  tbl_summary(include = c(vacinacao, internacoes)) %>%
-  bold_labels()
