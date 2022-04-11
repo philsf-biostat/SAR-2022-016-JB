@@ -187,7 +187,7 @@ tab_d1_f1 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f1)
   )
 ```
 
@@ -213,7 +213,7 @@ tab_d1_f3 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f3)
   )
 ```
 
@@ -233,7 +233,7 @@ tab_d2_f1 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f1)
   )
 ```
 
@@ -259,7 +259,7 @@ tab_d2_f3 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f3)
   )
 ```
 
@@ -279,7 +279,7 @@ tab_dr_f1 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f1)
   )
 ```
 
@@ -305,7 +305,7 @@ tab_dr_f3 %>%
       "Internações (2021)",
       "Correlação (2021)"
     ),
-    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f3)
   )
 ```
 
@@ -329,9 +329,9 @@ tab_f0 %>%
       d1,
       d2,
       dr,
-      "Esquema vacinal completo (DU, D2 ou DR)"
+      "DU, D2 ou DR"
     ),
-    caption = "**Tabela 6** Correlações em dose"
+    caption = "**Tabela 6** caption"
   )
 ```
 
