@@ -20,46 +20,50 @@ perfil %>%
   select(ap_resid, total) %>%
   left_join(analytical, by = "ap_resid") %>%
   group_by(dose, fe) %>%
-  summarise(cobertura = sum(vacinacao/total)) %>%
+  summarise(cobertura = sum(vacinacao/total), .groups = "drop") %>%
+  # summarise(cobertura = ifelse(sum(vacinacao/total)<=1, sum(vacinacao/total), 1), .groups = "drop") %>%
   distinct() %>%
   ggplot(aes(fe, cobertura, fill = dose)) +
   geom_col(position = "dodge") +
   # coord_flip() +
+  geom_hline(yintercept = 1, col = "red", lty = 2) +
   scale_fill_brewer(palette = "Blues") +
   scale_y_continuous(labels = scales::label_percent()) +
   theme_ff()
 
-int_tot <- perfil %>%
+int_tx <- perfil %>%
   select(ap_resid, total) %>%
   left_join(analytical, by = "ap_resid") %>%
   mutate(internacoes = internacoes / total) %>%
   group_by(mes, fe) %>%
   summarise(internacoes = sum(internacoes), .groups = "drop")
 
-int_tot
+int_tx
 
 cob_comp <- analytical %>%
   select(-internacoes) %>%
   filter(dose == "d2") %>%
   left_join(perfil %>% select(ap_resid, total), by = "ap_resid") %>%
   mutate(cobertura = vacinacao/total) %>%
-  select(ap_resid, mes, fe, cobertura) %>%
-  group_by(mes, fe) %>%
+  select(ap_resid, mes, fe, dose, cobertura) %>%
+  group_by(mes, fe, dose) %>%
   summarise(cobertura = sum(cobertura), .groups = "drop")
 
 cob_comp
 
-int_tot %>%
+int_tx %>%
+  # mutate(cobertura = ifelse(internacoes<=1, internacoes, 1)) %>%
   ggplot() +
-  geom_col(aes(mes, internacoes, fill = fe)) +
+  geom_col(aes(mes, internacoes, fill = fe), position = "dodge") +
   scale_fill_brewer(palette = "Reds") +
   scale_y_continuous(labels = scales::label_percent()) +
   theme_ff()
 
 cob_comp %>%
+  # mutate(cobertura = ifelse(cobertura<=1, cobertura, 1)) %>%
   ggplot() +
   scale_fill_brewer(palette = "Blues") +
-  geom_col(aes(mes, cobertura, fill = fe)) +
+  geom_col(aes(mes, cobertura, fill = fe), position = "dodge") +
   scale_y_continuous(labels = scales::label_percent()) +
   theme_ff()
 
