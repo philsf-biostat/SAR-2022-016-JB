@@ -162,6 +162,13 @@ As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 
 A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
 <!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
 
+## Internações por SRAG em 2021
+
+```{r fig2, fig.cap="**Figura 1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/int.png", error = FALSE)
+```
+
 ## Associação entre internações e vacinação
 
 ### Dose 1
@@ -171,21 +178,42 @@ A distribuição das vacinações mensais nas AP tem forte concentração à esq
 knitr::include_graphics("../figures/d1_vac.png", error = FALSE)
 ```
 
-```{r fig2, fig.cap="**Figura 1** caption"}
-# ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d1_int.png", error = FALSE)
-```
-
-```{r tab_d1, echo=FALSE, message=FALSE, warning=FALSE}
-tab_d1 %>%
+```{r tab_d1_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d1_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
-      f1,
-      f2,
-      f3
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
     ),
-    caption = "**Tabela 3** Correlações em cada faixa etária"
+    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_d1_f2, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d1_f2 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_d1_f3, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d1_f3 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", d1, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
   )
 ```
 
@@ -196,21 +224,42 @@ tab_d1 %>%
 knitr::include_graphics("../figures/d2_vac.png", error = FALSE)
 ```
 
-```{r fig4, fig.cap="**Figura 4** caption"}
-# ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/d2_int.png", error = FALSE)
-```
-
-```{r tab_d2, echo=FALSE, message=FALSE, warning=FALSE}
-tab_d2 %>%
+```{r tab_d2_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d2_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
-      f1,
-      f2,
-      f3
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
     ),
-    caption = "**Tabela 4** Correlações em cada faixa etária"
+    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_d2_f2, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d2_f2 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_d2_f3, echo=FALSE, message=FALSE, warning=FALSE}
+tab_d2_f3 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", d2, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
   )
 ```
 
@@ -221,21 +270,42 @@ tab_d2 %>%
 knitr::include_graphics("../figures/dr_vac.png", error = FALSE)
 ```
 
-```{r fig6, fig.cap="**Figura 6** caption"}
-# ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/dr_int.png", error = FALSE)
-```
-
-```{r tab_dr, echo=FALSE, message=FALSE, warning=FALSE}
-tab_dr %>%
+```{r tab_dr_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_dr_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
-      f1,
-      f2,
-      f3
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
     ),
-    caption = "**Tabela 5** Correlações em cada faixa etária"
+    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_dr_f2, echo=FALSE, message=FALSE, warning=FALSE}
+tab_dr_f2 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
+  )
+```
+
+```{r tab_dr_f3, echo=FALSE, message=FALSE, warning=FALSE}
+tab_dr_f3 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Doses aplicadas (2021)",
+      "Internações (2021)",
+      "Correlação (2021)"
+    ),
+    caption = paste("**Tabela 3** Totais de", dr, "e internações em 2021 em cada Área Programática (AP) para idosos", f2)
   )
 ```
 
