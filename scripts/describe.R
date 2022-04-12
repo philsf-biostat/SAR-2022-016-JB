@@ -133,14 +133,13 @@ tab_f0_dose <- analytical %>%
   summarise(correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
   pivot_wider(names_from = dose, values_from = correlacao)
 
-tab_f0_todas <- analytical %>%
-  filter(dose != "d1") %>%
-  group_by(ap_resid) %>%
-  summarise(Todas = cor(internacoes, vacinacao), .groups = "drop")
+# tab_f0_todas <- analytical %>%
+#   filter(dose != "d1") %>%
+#   group_by(ap_resid) %>%
+#   summarise(Todas = cor_f(internacoes, vacinacao), .groups = "drop")
 
-tab_f0 <- tab_f0_dose %>%
-  right_join(tab_f0_todas, by = "ap_resid") %>%
-  mutate(across(c(d1, d2, dr, Todas), format.float))
+tab_f0 <- tab_f0_dose #%>%
+  # right_join(tab_f0_todas, by = "ap_resid")
 
 # cobertura ---------------------------------------------------------------
 
