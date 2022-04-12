@@ -114,15 +114,15 @@ N/A
 
 ## Análises Estatísticas
 
-O perfil epidemiológico das AP incluídas no estudo será descrito na baseline, com os dados do Censo brasileiro de 2010.
+O perfil epidemiológico das AP incluídas no estudo foi descrito na baseline, com os dados do Censo brasileiro de 2010.
 As características demográficas
 (sexo e faixa etária)
-serão descritas como
+foram descritas como
 total de residentes em cada AP.
-As tendências de vacinação e de internações em cada AP serão resumidas em tabelas e visualizadas em gráficos exploratórios.
-As curvas de tendência de internação hospitalar de cada uma das dez APs serão criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
-A associação entre os totais de vacinados e de internações em cada AP será mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
-Todas as avaliações serão realizadas como análises de casos completos.
+As tendências de vacinação e de internações em cada AP foram resumidas em tabelas e visualizadas em gráficos exploratórios.
+As curvas de tendência de internação hospitalar de cada uma das dez APs foram criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
+A associação entre os totais de vacinados e de internações em cada AP foi mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
+Todas as avaliações foram realizadas como análises de casos completos.
 
 Esta análise foi realizada utilizando-se o software `R` versão `r getRversion()`.
 
@@ -385,14 +385,14 @@ tab_f0 %>%
 **Perfil epidemiológico estático**
 
 Os dados utilizados para a descrição do perfil epidemiológico dos idosos neste estudo vêm do Censo 2010, e portando não variam ao longo do ano de 2021.
-Por este motivo, não será possível utilizar o sexo e o tamanho da população como covariáveis para ajustar a incidência de casos de SRAG.
-Por este motivo apenas o número de casos será reportado nesta análise.
+Por este motivo, não foi possível utilizar o sexo e o tamanho da população como covariáveis para ajustar a incidência de casos de SRAG.
+Por este motivo apenas o número de casos foi reportado nesta análise.
 
 **Censo desatualizado**
 
 Além do mencionado acima, os dados que descrevem o perfil estão desatualizados em relação aos valores reais da população alvo.
 Isto introduziria um risco de viés em estimativas de incidência de SRAG pois, se a população atual for maior que a população descrita em 2010, a taxa de incidência com base nos casos de 2021 será menor que o avaliado com os dados disponíveis.
-Por este motivo apenas o número de casos será reportado nesta análise.
+Por este motivo apenas o número de casos foi reportado nesta análise.
 
 # Conclusões
 
