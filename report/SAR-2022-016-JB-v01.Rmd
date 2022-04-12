@@ -50,6 +50,10 @@ colnames(history) <- c("Versão", "Alterações")
 kable(history)
 ```
 
+```{r results, include=FALSE}
+source("scripts/results.R", encoding = 'UTF-8')
+```
+
 ---
 
 # Lista de abreviaturas
@@ -97,10 +101,6 @@ A tabela analítica não foi preenchida com valores nulos representando a estrut
 Nenhuma observação adicional foi excluída nesta etapa.
 
 # Metodologia
-
-```{r results, include=FALSE}
-source("scripts/results.R", encoding = 'UTF-8')
-```
 
 ## Variáveis
 
