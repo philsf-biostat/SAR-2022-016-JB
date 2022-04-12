@@ -183,6 +183,7 @@ tab_d1_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -196,6 +197,7 @@ tab_d1_f2 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -209,6 +211,7 @@ tab_d1_f3 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -229,6 +232,7 @@ tab_d2_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -242,6 +246,7 @@ tab_d2_f2 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -255,6 +260,7 @@ tab_d2_f3 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -275,6 +281,7 @@ tab_dr_f1 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -288,6 +295,7 @@ tab_dr_f2 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -301,6 +309,7 @@ tab_dr_f3 %>%
   kable(
     col.names = c(
       attr(analytical$ap_resid, "label"),
+      "N",
       "Doses aplicadas (2021)",
       "Internações (2021)",
       "Correlação (2021)"
@@ -328,8 +337,8 @@ tab_f0 %>%
       attr(analytical$ap_resid, "label"),
       d1,
       d2,
-      dr,
-      "DU, D2 ou DR"
+      dr#,
+      # "DU, D2 ou DR"
     ),
     caption = "**Tabela 6** caption"
   )
