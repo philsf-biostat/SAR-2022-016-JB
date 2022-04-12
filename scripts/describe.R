@@ -66,9 +66,9 @@ tab_perfil <- perfil %>%
   )
 
 # Tabela 2
-tab_vars <- analytical %>%
-  tbl_summary(include = c(vacinacao, internacoes)) %>%
-  bold_labels()
+# tab_vars <- analytical %>%
+#   tbl_summary(include = c(vacinacao, internacoes)) %>%
+#   bold_labels()
 
 # Dose 1 ------------------------------------------------------------------
 

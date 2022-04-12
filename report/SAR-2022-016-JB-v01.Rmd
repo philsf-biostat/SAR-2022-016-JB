@@ -124,18 +124,16 @@ tab_perfil %>%
   )
 ```
 
-A tabela 2 mostra o esforço vacinal contra COVID-19 e as internações por SRAG para todas as AP durante o período do estudo.
-A amplitude da vacinação nas APs variou entre
-`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique()`
-e
-`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique()`
-ao longo do ano de 2021.
-A AP com maior número absoluto de vacinações aplicadas foi
-a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
-Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
-As dez AP observaram uma média mensal de
-`r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)` aplicações de vacinas
-ao longo de 2021.
+<!-- A tabela 2 mostra o esforço vacinal contra COVID-19 e as internações por SRAG para todas as AP durante o período do estudo. -->
+
+```{r tab2}
+# tab_vars %>%
+#   as_kable(
+#     caption = "**Tabela 2** Variáveis do estudo"
+#   )
+```
+
+## Internações por SRAG em 2021
 
 O maior número de internações em uma AP em um único mês foi
 `r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique()`
@@ -145,31 +143,26 @@ O menor número de internações foi
 observado nas AP 2.1 e 5.3, ambas em novembro.
 As dez AP observaram uma média mensal de 71 internações ao longo de 2021.
 
-```{r tab2}
-tab_vars %>%
-  as_kable(
-    caption = "**Tabela 2** Variáveis do estudo"
-  )
-```
-
-Destaca-se a grande variabilidade do esforço vacinal, onde o
-DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
-é consideravalmente maior que a média.
-Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
-O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
-As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
-
-A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
-<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
-
-## Internações por SRAG em 2021
-
 ```{r fig2, fig.cap="**Figura 1** caption"}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/int.png", error = FALSE)
 ```
 
 ## Associação entre internações e vacinação
+
+A amplitude da vacinação nas APs variou entre
+`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique()`
+e
+`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique()`
+ao longo do ano de 2021.
+A AP com maior número absoluto de vacinações aplicadas foi
+a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
+Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
+Globalmente, as dez AP observaram uma média mensal de
+`r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)` aplicações de vacinas
+ao longo de 2021.
+
+As tendências das curvas de vacinação e a associação com os números de internações por SRAG serão explorados nas próximas seções.
 
 ### Dose 1
 
@@ -355,6 +348,15 @@ tab_f0 %>%
 # Apêndice
 
 ## Análise exploratória de dados
+
+Destaca-se a grande variabilidade do esforço vacinal, onde o
+DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
+é consideravalmente maior que a média.
+Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
+O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
+As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
+A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
+<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
 
 ```{r figA1, fig.cap="**Figura A1** caption"}
 # ![Age](../figures/outcome.png)
