@@ -431,6 +431,13 @@ Por este motivo apenas o número de casos foi reportado nesta análise.
 
 ## Análise exploratória de dados
 
+As figuras A1 e A2 mostram os histogramas das duas principais variáveis da análise.
+
+```{r figA1, fig.cap="**Figura A1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_int.png", error = FALSE)
+```
+
 Destaca-se a grande variabilidade do esforço vacinal, onde o
 DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
 é consideravalmente maior que a média.
@@ -439,11 +446,6 @@ O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internaçõe
 As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
 A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
 <!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
-
-```{r figA1, fig.cap="**Figura A1** caption"}
-# ![Age](../figures/outcome.png)
-knitr::include_graphics("../figures/hist_int.png", error = FALSE)
-```
 
 ```{r figA2, fig.cap="**Figura A2** caption"}
 # ![Age](../figures/outcome.png)
