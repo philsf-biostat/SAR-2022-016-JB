@@ -14,13 +14,13 @@ theme_gtsummary_compact()
 theme_gtsummary_language(language = "pt") # traduzir
 theme_gtsummary_eda()
 
-mdp <- function(x, ...) {
+mdp <- function(x, digits = 1, ...) {
   m <- mean(x, ...)
   dp <- sd(x, ...)
   paste0(
-    style_number(m, decimal.mark = ",", big.mark = "."),
+    style_number(m, decimal.mark = ",", big.mark = ".", digits = digits),
     " (",
-    style_number(dp, decimal.mark = ",", big.mark = "."),
+    style_number(dp, decimal.mark = ",", big.mark = ".", digits = digits),
     ")"
     )
 }
