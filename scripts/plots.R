@@ -138,10 +138,10 @@ gg_f0_int_vac <- gg_f0_2x +
     name = attr(analytical$vacinacao, "label"),
     labels = scales::label_number_auto(),
     # segundo eixo
-    sec.axis = sec_axis(~./100, name = attr(analytical$internacoes, "label"),)
+    sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
   geom_line(aes(y = vacinacao), color = ff.col) +
-  geom_line(aes(y = internacoes*100), color = "firebrick4") +
+  geom_line(aes(y = internacoes/1), color = "firebrick4") +
   labs()
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
