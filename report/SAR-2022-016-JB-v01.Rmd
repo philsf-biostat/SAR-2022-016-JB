@@ -179,12 +179,12 @@ tab_perfil %>%
 ## Internações por SRAG em 2021
 
 O maior número de internações em uma AP em um único mês foi
-`r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique()`
+`r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique() %>% fn()`
 observado na AP 3.3 no mês de abril.
 O menor número de internações foi
-`r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique()`
+`r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique() %>% fn(digits = 3)`
 observado nas AP 2.1 e 5.3, ambas em novembro.
-As dez AP observaram uma média mensal de 71 internações ao longo de 2021.
+As dez AP observaram uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações ao longo de 2021.
 
 ```{r fig1, fig.cap="**Figura 1** Internações de idosos por SRAG em 2021 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
@@ -194,15 +194,15 @@ knitr::include_graphics("../figures/int.png", error = FALSE)
 ## Associação entre internações e vacinação
 
 A amplitude da vacinação nas APs variou entre
-`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique()`
+`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 e
-`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique()`
+`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 ao longo do ano de 2021.
 A AP com maior número absoluto de vacinações aplicadas foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
 Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
 Globalmente, as dez AP observaram uma média mensal de
-`r analytical %>% pull(vacinacao) %>% mean() %>% format.float(digits = 0)` aplicações de vacinas
+`r analytical %>% pull(vacinacao) %>% mean() %>% fn()` aplicações de vacinas
 ao longo de 2021.
 
 As tendências das curvas de vacinação e a associação com os números de internações por SRAG serão explorados nas próximas seções.
