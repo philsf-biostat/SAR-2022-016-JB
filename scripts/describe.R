@@ -14,14 +14,18 @@ theme_gtsummary_compact()
 theme_gtsummary_language(language = "pt") # traduzir
 theme_gtsummary_eda()
 
+fn <- function(x, digits = 2) {
+  style_number(x, decimal.mark = ",", big.mark = ".", digits = digits)
+}
+
 mdp <- function(x, digits = 2, ...) {
   m <- mean(x, ...)
   dp <- sd(x, ...)
   paste0(
-    style_number(m, decimal.mark = ",", big.mark = ".", digits = digits),
+    fn(m, digits = digits),
     # format.pct(m, digits = digits),
     " (",
-    style_number(dp, decimal.mark = ",", big.mark = ".", digits = digits),
+    fn(dp, digits = digits),
     # format.pct(dp, digits = digits),
     ")"
     )
@@ -29,7 +33,7 @@ mdp <- function(x, digits = 2, ...) {
 
 cor_f <- function(x, y, digits = 2, ...) {
   cor(x, y, ...) %>%
-    style_number(decimal.mark = ",", big.mark = ".", digits = digits)
+    fn(digits = digits)
 }
 
 # exploratory -------------------------------------------------------------
