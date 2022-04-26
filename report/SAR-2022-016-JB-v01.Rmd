@@ -221,14 +221,13 @@ tab_f1 %>%
       attr(analytical$ap_resid, "label"),
       "Dose",
       "N",
-      "Doses aplicadas (2021)",
-      "Internações (2021)",
-      "Correlação (2021)"
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
     ),
-    caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
-                     d1,
-                     ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
-                     f1)
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f1,
+                     "nos meses de 2021.")
   )
 ```
 
@@ -280,14 +279,13 @@ tab_f2 %>%
       attr(analytical$ap_resid, "label"),
       "Dose",
       "N",
-      "Doses aplicadas (2021)",
-      "Internações (2021)",
-      "Correlação (2021)"
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
     ),
-    caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
-                     d2,
-                     ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
-                     f1)
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f2,
+                     "nos meses de 2021.")
   )
 ```
 
@@ -339,14 +337,13 @@ tab_f3 %>%
       attr(analytical$ap_resid, "label"),
       "Dose",
       "N",
-      "Doses aplicadas (2021)",
-      "Internações (2021)",
-      "Correlação (2021)"
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
     ),
-    caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
-                     dr,
-                     ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
-                     f1)
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f3,
+                     "nos meses de 2021.")
   )
 ```
 
