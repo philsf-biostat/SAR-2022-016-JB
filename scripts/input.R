@@ -56,8 +56,8 @@ data.raw <- perfil %>%
   select(ap_resid, total) %>%
   left_join(data.raw, by = "ap_resid") %>%
   mutate(
-    # internações (por 10k hab)
-    internacoes = internacoes / total * 10000,
+    # internações (por 1k hab)
+    internacoes = internacoes / total * 1000,
     # internacoes = internacoes / total,
     # cobertura (% do mês)
     vacinacao = vacinacao/total,
