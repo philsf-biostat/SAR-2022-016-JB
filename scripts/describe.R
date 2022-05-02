@@ -76,71 +76,112 @@ tab_perfil <- perfil %>%
 #   tbl_summary(include = c(vacinacao, internacoes)) %>%
 #   bold_labels()
 
-# Dose 1 ------------------------------------------------------------------
+# f1 ----------------------------------------------------------------------
 
-tab_d1_f1 <- analytical %>%
-  filter(dose == "d1", fe == f1) %>%
-  group_by(ap_resid) %>%
+tab_f1 <- analytical %>%
+  filter(fe == f1) %>%
+  group_by(ap_resid, dose) %>%
   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
 
-tab_d1_f2 <- analytical %>%
-  filter(dose == "d1", fe == f2) %>%
-  group_by(ap_resid) %>%
+# acrescentar MRJ (Global)
+tab_f1 <- analytical %>%
+  filter(fe == f1) %>%
+  group_by(dose) %>%
+  summarise(ap_resid = "Global", N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
+  bind_rows(tab_f1) %>%
+  select(ap_resid, everything())
+
+# f2 ----------------------------------------------------------------------
+
+tab_f2 <- analytical %>%
+  filter(fe == f2) %>%
+  group_by(ap_resid, dose) %>%
   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
 
-tab_d1_f3 <- analytical %>%
-  filter(dose == "d1", fe == f3) %>%
-  group_by(ap_resid) %>%
+# acrescentar MRJ (Global)
+tab_f2 <- analytical %>%
+  filter(fe == f2) %>%
+  group_by(dose) %>%
+  summarise(ap_resid = "Global", N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
+  bind_rows(tab_f2) %>%
+  select(ap_resid, everything())
+
+# f3 ----------------------------------------------------------------------
+
+tab_f3 <- analytical %>%
+  filter(fe == f3) %>%
+  group_by(ap_resid, dose) %>%
   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
 
-# Dose 2 ------------------------------------------------------------------
-
-tab_d2_f1 <- analytical %>%
-  filter(dose == "d2", fe == f1) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
-
-tab_d2_f2 <- analytical %>%
-  filter(dose == "d2", fe == f2) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
-
-tab_d2_f3 <- analytical %>%
-  filter(dose == "d2", fe == f3) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
-
-# Dose R ------------------------------------------------------------------
-
-tab_dr_f1 <- analytical %>%
-  filter(dose == "dr", fe == f1) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
-
-tab_dr_f2 <- analytical %>%
-  filter(dose == "dr", fe == f2) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
-
-tab_dr_f3 <- analytical %>%
-  filter(dose == "dr", fe == f3) %>%
-  group_by(ap_resid) %>%
-  summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# acrescentar MRJ (Global)
+tab_f3 <- analytical %>%
+  filter(fe == f3) %>%
+  group_by(dose) %>%
+  summarise(ap_resid = "Global", N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
+  bind_rows(tab_f3) %>%
+  select(ap_resid, everything())
 
 # Avaliação Global --------------------------------------------------------
 
-tab_f0_dose <- analytical %>%
-  group_by(ap_resid, dose) %>%
-  summarise(correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
-  pivot_wider(names_from = dose, values_from = correlacao)
+# tab_f0_dose <- analytical %>%
+#   group_by(ap_resid, dose) %>%
+#   summarise(correlacao = cor_f(internacoes, vacinacao), .groups = "drop") %>%
+#   pivot_wider(names_from = dose, values_from = correlacao)
 
 # tab_f0_todas <- analytical %>%
 #   filter(dose != "d1") %>%
 #   group_by(ap_resid) %>%
 #   summarise(Todas = cor_f(internacoes, vacinacao), .groups = "drop")
 
-tab_f0 <- tab_f0_dose #%>%
+# tab_f0 <- tab_f0_dose #%>%
   # right_join(tab_f0_todas, by = "ap_resid")
+
+# obsoletos ---------------------------------------------------------------
+
+# tab_d1_f1 <- analytical %>%
+#   filter(dose == "d1", fe == f1) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_d1_f2 <- analytical %>%
+#   filter(dose == "d1", fe == f2) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_d1_f3 <- analytical %>%
+#   filter(dose == "d1", fe == f3) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+
+# tab_d2_f1 <- analytical %>%
+#   filter(dose == "d2", fe == f1) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_d2_f2 <- analytical %>%
+#   filter(dose == "d2", fe == f2) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_d2_f3 <- analytical %>%
+#   filter(dose == "d2", fe == f3) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+
+# tab_dr_f1 <- analytical %>%
+#   filter(dose == "dr", fe == f1) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_dr_f2 <- analytical %>%
+#   filter(dose == "dr", fe == f2) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
+# 
+# tab_dr_f3 <- analytical %>%
+#   filter(dose == "dr", fe == f3) %>%
+#   group_by(ap_resid) %>%
+#   summarise(N = n(), vac = mdp(vacinacao), int = mdp(internacoes), correlacao = cor_f(internacoes, vacinacao), .groups = "drop")
 
 # cobertura ---------------------------------------------------------------
 
