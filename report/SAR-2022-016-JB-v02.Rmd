@@ -1,0 +1,478 @@
+---
+title: "Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021"
+subtitle: 'DOCUMENTO: SAR-2022-016-JB-v01'
+author: '**De:** Felipe Figueiredo **Para:** Janaina Balmant'
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 6
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    number_sections: yes
+    toc: yes
+  word_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 6
+    reference_docx: misc/style_SAR_pt.docx
+    toc: yes
+toc-title: "Sumário"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+options(scipen = 999)
+library(pander)
+library(knitr)
+panderOptions('table.style', 'rmarkdown')
+panderOptions('table.split.table', 160)
+```
+
+---
+
+\newpage
+
+**Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021**
+
+**Histórico do documento**
+
+```{r history}
+Version <- c("01")
+Changes <- c("Versão inicial")
+history <- cbind(Version, Changes)
+colnames(history) <- c("Versão", "Alterações")
+# pander(history, split.cells = 70)
+kable(history)
+```
+
+```{r results, include=FALSE}
+source("scripts/results.R", encoding = 'UTF-8')
+```
+
+---
+
+# Lista de abreviaturas
+
+- AIQ: Amplitude inter-quartil
+- AP: Área programática
+- CV: Coeficiente de variação
+- DP: desvio padrão
+- IC: intervalo de confiança
+- SRAG: Síndrome respiratória aguda grave
+
+# Contexto
+
+## Objetivos
+
+Correlacionar as tendências de internação hospitalar por SRAG e vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
+
+## Recepção e tratamento dos dados
+
+Os dados brutos de vacinação de COVID-19 e internações por SRAG foram recebidos em diversas tabelas separadas, que foram tratadas previamente à junção em uma tabela única.
+As tabelas exibiam as contagens agregadas por AP em cada mês de 2021, e havia uma tabela para cada faixa etária avaliada no estudo (60-69 anos, 70-79 anos e 80 anos ou mais).
+Os dados de internações vieram de uma única tabela, enquanto os dados de vacinação estavam adicionalmente segregados em tabelas por dose do esquema vacinal ("Dose 1", "Dose 2 ou dose única" e "Dose de reforço").
+Todos os dados disponíveis foram submetidos aos critérios de inclusão e exclusão: apenas dados de residentes das APs e referentes ao ano de 2021 foram incluídos na tabela.
+Erros de codificação de dados foram corrigidos nos processos de limpeza de dados.
+No total havia uma tabela com dados de internações, nove tabelas com dados de vacinação e duas tabelas de perfil epidemiológico (por sexo e por população total).
+
+Na primeira etapa as três tabelas de cada variável, correspondendo às três faixas etárias, foram consolidadas usando o código da AP e o mês como chave de join.
+Isto resultou em uma tabela com todas as contagens de cada variável (internações e vacinação).
+Na segunda etapa as duas tabelas foram consolidadas em uma tabela única com todos os valores mensais das internações e de vacinação, estratificados por AP e por mês.
+
+Esta tabela final de dados brutos foi pós processada conforme descrito na próxima seção.
+A tabela de dados de perfil epidemiológico foi mantida separada da tabela analítica (Ver observações).
+
+Todas as variáveis da tabela de dados analíticos foram identificadas de acordo com as descrições das variáveis, e os valores foram identificados de acordo com o dicionário de dados providenciado.
+Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
+Os valores numéricos referentes aos meses de 2021 foram convertidos para datas putativas (primeiro dia de cada mês) para viabilizar a visualização das curvas de tendência na escala temporal de forma interpretável.
+
+Considerando três faixas etárias, em dez AP, contabilizando três etapas do esquema vacinal durante 12 meses, o tamanho teórico da tabela de dados seria equivalente a 1080 observações.
+Depois dos procedimentos de limpeza e seleção
+`r Nvar_final`
+variáveis foram incluídas na análise com
+`r Nobs_final`
+observações.
+A tabela analítica não foi preenchida com valores nulos representando a estrutura maximal teórica, incluindo apenas as observações disponíveis nos dados brutos.
+Nenhuma observação adicional foi excluída nesta etapa.
+
+# Metodologia
+
+## Variáveis
+
+### Desfecho primário
+
+Número total de internações por SRAG em idosos.
+
+### Covariáveis
+
+N/A
+
+## Análises Estatísticas
+
+O perfil epidemiológico das AP incluídas no estudo foi descrito na baseline, com os dados do Censo brasileiro de 2010.
+As características demográficas
+(sexo e faixa etária)
+foram descritas como
+total de residentes em cada AP.
+As tendências de vacinação e de internações em cada AP foram resumidas em tabelas e visualizadas em gráficos exploratórios.
+As curvas de tendência de internação hospitalar de cada uma das dez APs foram criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
+A associação entre os totais de vacinados e de internações em cada AP foi mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
+Todas as avaliações foram realizadas como análises de casos completos.
+
+Esta análise foi realizada utilizando-se o software `R` versão `r getRversion()`.
+
+# Resultados
+
+## População do estudo e acompanhamento
+
+Conforme o Censo de 2010 as diversas AP do município do Rio de Janeiro possuíam entre
+`r perfil %>% slice_min(total) %>% pull(total)`
+e
+`r perfil %>% slice_max(total) %>% pull(total)`
+idosos, a partir de 60 anos (Tabela 1).
+A AP com menor abundância de idosos era
+a AP `r perfil %>% slice_min(total) %>% pull(ap_resid)`,
+enquanto
+a AP `r perfil %>% slice_max(total) %>% pull(ap_resid)`
+possuía a maior população absoluta.
+Em termos relativos
+a AP `r pct_ap %>% slice_max(pct60) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+60-69 anos (`r pct_ap %>% slice_max(pct60) %>% pull(pct60) %>% format.pct()`),
+a AP `r pct_ap %>% slice_max(pct70) %>% pull(ap_resid)`
+possuía a maior proporção de residentes na faixa entre
+70-79 anos (`r pct_ap %>% slice_max(pct70) %>% pull(pct70) %>% format.pct()`)
+e a AP `r pct_ap %>% slice_max(pct80) %>% pull(ap_resid)`
+possuía a maior proporção de residentes com
+80 anos ou mais (`r pct_ap %>% slice_max(pct80) %>% pull(pct80) %>% format.pct()`).
+
+```{r tab_desc}
+tab_perfil %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),# ap_resid
+      "Homens",
+      "Mulheres",
+      f1,
+      f2,
+      f3,
+      "Total"
+    ),
+    caption = "**Tabela 1** Perfil epidemiológico"
+  )
+```
+
+<!-- A tabela 2 mostra o esforço vacinal contra COVID-19 e as internações por SRAG para todas as AP durante o período do estudo. -->
+
+```{r tab2}
+# tab_vars %>%
+#   as_kable(
+#     caption = "**Tabela 2** Variáveis do estudo"
+#   )
+```
+
+## Internações por SRAG em 2021
+
+O maior número de internações em uma AP em um único mês foi
+`r analytical %>% slice_max(internacoes) %>% pull(internacoes) %>% unique() %>% fn()`
+observado na AP 3.3 no mês de abril.
+O menor número de internações foi
+`r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique() %>% fn(digits = 3)`
+observado nas AP 2.1 e 5.3, ambas em novembro.
+As dez AP observaram uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações ao longo de 2021.
+
+```{r fig1, fig.cap="**Figura 1** Internações de idosos por SRAG em 2021 nas AP do município do Rio de Janeiro."}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/int.png", error = FALSE)
+```
+
+## Associação entre internações e vacinação
+
+A amplitude da vacinação nas APs variou entre
+`r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
+e
+`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
+ao longo do ano de 2021.
+A AP com maior número absoluto de vacinações aplicadas foi
+a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
+Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
+Globalmente, as dez AP observaram uma média mensal de
+`r analytical %>% pull(vacinacao) %>% mean() %>% fn()` aplicações de vacinas
+ao longo de 2021.
+
+As tendências das curvas de vacinação e a associação com os números de internações por SRAG serão explorados nas próximas seções.
+
+### Idosos `r f1`
+
+```{r fig2, fig.cap="**Figura 2** Aplicação da dose 1 da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f1.png", error = FALSE)
+```
+
+```{r tab_d1_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_f1 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Dose",
+      "N",
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
+    ),
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f1,
+                     "nos meses de 2021.")
+  )
+```
+
+```{r tab_d1_f2, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_d1_f2 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      d1,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f2)
+#   )
+```
+
+```{r tab_d1_f3, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_d1_f3 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      d1,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f3)
+#   )
+```
+
+### Idosos `r f2`
+
+```{r fig3, fig.cap="**Figura 3** Aplicação da dose 2 (ou dose única) da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f2.png", error = FALSE)
+```
+
+```{r tab_d2_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_f2 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Dose",
+      "N",
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
+    ),
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f2,
+                     "nos meses de 2021.")
+  )
+```
+
+```{r tab_d2_f2, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_d2_f2 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      d2,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f2)
+#   )
+```
+
+```{r tab_d2_f3, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_d2_f3 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      d2,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f3)
+#   )
+```
+
+### Idosos `r f3`
+
+```{r fig4, fig.cap="**Figura 4** Aplicação da dose de reforço da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/f3.png", error = FALSE)
+```
+
+```{r tab_dr_f1, echo=FALSE, message=FALSE, warning=FALSE}
+tab_f3 %>%
+  kable(
+    col.names = c(
+      attr(analytical$ap_resid, "label"),
+      "Dose",
+      "N",
+      "Cobertura vacinal",
+      "Taxa de internações",
+      "Correlação"
+    ),
+    caption = paste("**Tabela xx** Média (DP) de cobertura vacinal, média (DP) de taxa de internações e correlação em 2021 em cada Área Programática (AP) para idosos",
+                     f3,
+                     "nos meses de 2021.")
+  )
+```
+
+```{r tab_dr_f2, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_dr_f2 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      dr,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f2)
+#   )
+```
+
+```{r tab_dr_f3, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_dr_f3 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       "N",
+#       "Doses aplicadas (2021)",
+#       "Internações (2021)",
+#       "Correlação (2021)"
+#     ),
+#     caption = paste0("**Tabela xx** Média (DP) de aplicações de ",
+#                      dr,
+#                      ", média (DP) de internações e correlação em 2021 em cada Área Programática (AP) para idosos ",
+#                      f3)
+#   )
+```
+
+<!-- ## Avaliação global -->
+
+```{r fig5, fig.cap="**Figura 5** Vacinação e internação de idosos (60+)."}
+# ![Age](../figures/outcome.png)
+# knitr::include_graphics("../figures/f0_int_vac.png", error = FALSE)
+```
+
+```{r fig6, fig.cap="**Figura 6** caption"}
+# ![Age](../figures/outcome.png)
+# knitr::include_graphics("../figures/f0_vac.png", error = FALSE)
+```
+
+```{r tab_f0, echo=FALSE, message=FALSE, warning=FALSE}
+# tab_f0 %>%
+#   kable(
+#     col.names = c(
+#       attr(analytical$ap_resid, "label"),
+#       d1,
+#       d2,
+#       dr#,
+#       # "DU, D2 ou DR"
+#     ),
+#     caption = "**Tabela xx** Correlações entre vacinação de COVID-19 e internações de idosos (60+) por SRAG ao em 2021, por etapa do esquema vacinal."
+#   )
+```
+
+# Observações e limitações
+
+**Perfil epidemiológico estático**
+
+Os dados utilizados para a descrição do perfil epidemiológico dos idosos neste estudo vêm do Censo 2010, e portando não variam ao longo do ano de 2021.
+Por este motivo, não foi possível utilizar o sexo e o tamanho da população como covariáveis para ajustar a incidência de casos de SRAG.
+Por este motivo apenas o número de casos foi reportado nesta análise.
+
+**Censo desatualizado**
+
+Além do mencionado acima, os dados que descrevem o perfil estão desatualizados em relação aos valores reais da população alvo.
+Isto introduziria um risco de viés em estimativas de incidência de SRAG pois, se a população atual for maior que a população descrita em 2010, a taxa de incidência com base nos casos de 2021 será menor que o avaliado com os dados disponíveis.
+Por este motivo apenas o número de casos foi reportado nesta análise.
+
+# Conclusões
+
+# Referências
+
+- **SAP-2022-016-JB-v01** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
+
+# Apêndice
+
+## Análise exploratória de dados
+
+As figuras A1 e A2 mostram os histogramas das duas principais variáveis da análise.
+
+```{r figA1, fig.cap="**Figura A1** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_int.png", error = FALSE)
+```
+
+Destaca-se a grande variabilidade do esforço vacinal, onde o
+DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
+é consideravalmente maior que a média.
+Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
+O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
+As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
+A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
+<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
+
+```{r figA2, fig.cap="**Figura A2** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
+```
+
+## Disponibilidade
+
+Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v01**) podem ser obtidos no seguinte endereço:
+
+<!-- Este documento pode ser obtido no seguinte endereço: -->
+
+<https://philsf-biostat.github.io/SAR-2022-016-JB/>
+
+<!-- O cliente solicitou que esta análise seja mantida confidencial. -->
+<!-- Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v01**) portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
+<!-- O portfólio pode ser visto em: -->
+
+<!-- <https://philsf-biostat.github.io/> -->
+
+## Dados utilizados
+
+A tabela A1 mostra a estrutura  da tabela de dados analíticos.
+
+```{r data}
+analytical_mockup %>%
+  pander(caption = "**Tabela A1** Estrutura da tabela de dados analíticos")
+```
+
+Os dados utilizados neste relatório não podem ser publicados online por questões de sigilo.
