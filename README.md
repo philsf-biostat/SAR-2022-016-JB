@@ -7,24 +7,26 @@ Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 ## Análises realizadas
 
 1. Análise descritiva
+1. Análise inferencial
+1. Modelagem estatística
 
 ## Documentos
 
 ### Plano Analítico (SAP)
 
-<!-- - [Visualização online][sapviz-v02] -->
-<!-- - [PDF][sappdf-v02] -->
+- [Visualização online][sapviz-v02]
+- [PDF][sappdf-v02]
 
-- [Visualização online][sapviz-v01]
-- [PDF][sappdf-v01]
+<!-- - [Visualização online][sapviz-v01] -->
+<!-- - [PDF][sappdf-v01] -->
 
 ### Relatório de Análise Estatística (SAR)
 
-<!-- - [Visualização online][reportviz-v02] -->
-<!-- - [PDF][pdf-v02] -->
+- [Visualização online][reportviz-v02]
+- [PDF][pdf-v02]
 
-- [Visualização online][reportviz-v01]
-- [PDF][pdf-v01]
+<!-- - [Visualização online][reportviz-v01] -->
+<!-- - [PDF][pdf-v01] -->
 
 <!-- ## Análises associadas -->
 
