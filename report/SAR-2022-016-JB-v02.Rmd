@@ -1,6 +1,6 @@
 ---
 title: "Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021"
-subtitle: 'DOCUMENTO: SAR-2022-016-JB-v01'
+subtitle: 'DOCUMENTO: SAR-2022-016-JB-v02'
 author: '**De:** Felipe Figueiredo **Para:** Janaina Balmant'
 date: "`r Sys.Date()`"
 output:
@@ -425,7 +425,7 @@ Por este motivo apenas o número de casos foi reportado nesta análise.
 
 # Referências
 
-- **SAP-2022-016-JB-v01** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
+- **SAP-2022-016-JB-v02** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
 
 # Apêndice
 
@@ -454,14 +454,14 @@ knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 
 ## Disponibilidade
 
-Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v01**) podem ser obtidos no seguinte endereço:
+Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v02**) podem ser obtidos no seguinte endereço:
 
 <!-- Este documento pode ser obtido no seguinte endereço: -->
 
 <https://philsf-biostat.github.io/SAR-2022-016-JB/>
 
 <!-- O cliente solicitou que esta análise seja mantida confidencial. -->
-<!-- Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v01**) portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
+<!-- Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v02**) portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
 <!-- O portfólio pode ser visto em: -->
 
 <!-- <https://philsf-biostat.github.io/> -->
