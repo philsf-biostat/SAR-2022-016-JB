@@ -51,6 +51,18 @@ perfil <- perfil %>%
     ap_resid = format.float(ap_resid, digits = 1), # or as.character
   )
 
+# taxas
+data.raw <- perfil %>%
+  select(ap_resid, total) %>%
+  left_join(data.raw, by = "ap_resid") %>%
+  mutate(
+    # internacoes = internacoes / total * 10000, # internações (por 10k hab)
+    # internacoes = internacoes / total *  1000, # internações (por 1k hab)
+    internacoes = internacoes / total *   100,   # internações (por 100 hab)
+    # cobertura (% do mês)
+    vacinacao = vacinacao/total,
+  )
+
 # labels ------------------------------------------------------------------
 
 f1 <- "60-69 anos"
