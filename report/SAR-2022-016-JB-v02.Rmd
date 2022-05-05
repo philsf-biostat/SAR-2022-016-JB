@@ -133,9 +133,17 @@ As características demográficas
 foram descritas como
 total de residentes em cada AP.
 As tendências de vacinação e de internações em cada AP foram resumidas em tabelas e visualizadas em gráficos exploratórios.
-As curvas de tendência de internação hospitalar de cada uma das dez APs foram criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
-A associação entre os totais de vacinados e de internações em cada AP foi mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
+As curvas de tendência de internação hospitalar de cada uma das dez APs foram criadas para cada uma das faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais), estratificando por etapa do esquema vacinal (dose 1, dose 2 e dose de reforço).
+Modelos de regressão linear múltipla foram usados para estimar a associação entre a taxa mensal de cobertura vacinal e a taxa de internação por SRAG.
+Para avaliar o impacto de cada covariável usada no controle, planeja-se criar diversos modelos em complexidade crescente.
+A estimativa bruta da associação entre a cobertura vacinal como variável independente e a taxa de internações como variável dependente será avaliada com uma regressão linear simples.
+Outros modelos acrescentarão a a AP, a AP e a faixa etária, e a etapa do esquema vacinal (dose 1, dose 2 ou única e dose de reforço) como variáveis de controle.
+O modelo final incluirá a cobertura vacinal como variável independente e todas as variáveis acima como variáveis de controle.
+
 Todas as avaliações foram realizadas como análises de casos completos.
+Todas as análises foram realizadas ao nível de significância de 5%.
+Todos os testes de hipóteses e intervalos de confiança calculados foram
+bicaudais.
 
 Esta análise foi realizada utilizando-se o software `R` versão `r getRversion()`.
 
