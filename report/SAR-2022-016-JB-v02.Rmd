@@ -152,9 +152,9 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 ## População do estudo e acompanhamento
 
 Conforme o Censo de 2010 as diversas AP do município do Rio de Janeiro possuíam entre
-`r perfil %>% slice_min(total) %>% pull(total)`
+`r perfil %>% slice_min(total) %>% pull(total) %>% fn(digits = 0)`
 e
-`r perfil %>% slice_max(total) %>% pull(total)`
+`r perfil %>% slice_max(total) %>% pull(total) %>% fn(digits = 0)`
 idosos, a partir de 60 anos (Tabela 1).
 A AP com menor abundância de idosos era
 a AP `r perfil %>% slice_min(total) %>% pull(ap_resid)`,
