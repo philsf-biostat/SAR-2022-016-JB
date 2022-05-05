@@ -207,12 +207,12 @@ O menor número de internações foi
 observado nas AP 2.1 e 5.3, ambas em novembro.
 As dez AP observaram uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações ao longo de 2021.
 
-```{r fig1, fig.cap="**Figura 1** Internações de idosos por SRAG em 2021 nas AP do município do Rio de Janeiro."}
+```{r fig1, fig.cap="**Figura 1** Taxas de internações de idosos por SRAG em 2021 nas AP do município do Rio de Janeiro, por 100 habitantes."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/int.png", error = FALSE)
 ```
 
-## Associação entre internações e vacinação
+## Cobertura vacinal contra COVID-19
 
 A amplitude da vacinação nas APs variou entre
 `r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
@@ -247,6 +247,15 @@ knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```{r fig4, fig.cap="**Figura 4** Aplicação da dose de reforço da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f3.png", error = FALSE)
+```
+
+## Associação entre internações e vacinação
+
+```{r tab_mod}
+tab_mod %>%
+  as_kable(
+    caption = "**Tabela xx** caption."
+  )
 ```
 
 # Observações e limitações
@@ -294,6 +303,15 @@ A distribuição das vacinações mensais nas AP tem forte concentração à esq
 knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 ```
 
+## Estratégia de modelagem
+
+```{r tab_app}
+tab_app %>%
+  as_kable(
+    caption = "**Tabela A1** caption."
+  )
+```
+
 ## Disponibilidade
 
 Todos os documentos gerados nessa consultoria foram incluídos no portfólio do consultor.
@@ -311,11 +329,11 @@ O portfólio pode ser visto em:
 
 ## Dados utilizados
 
-A tabela A1 mostra a estrutura  da tabela de dados analíticos.
+A tabela A2 mostra a estrutura  da tabela de dados analíticos.
 
 ```{r data}
 analytical_mockup %>%
-  pander(caption = "**Tabela A1** Estrutura da tabela de dados analíticos")
+  pander(caption = "**Tabela A2** Estrutura da tabela de dados analíticos")
 ```
 
 Os dados utilizados neste relatório não podem ser publicados online por questões de sigilo.
