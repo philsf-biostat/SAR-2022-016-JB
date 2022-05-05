@@ -87,8 +87,9 @@ Na segunda etapa as duas tabelas foram consolidadas em uma tabela única com tod
 Esta tabela final de dados brutos foi pós processada conforme descrito na próxima seção.
 A tabela de dados de perfil epidemiológico foi mantida separada da tabela analítica (Ver observações).
 
-Todas as variáveis da tabela de dados analíticos foram identificadas de acordo com as descrições das variáveis, e os valores foram identificados de acordo com o dicionário de dados providenciado.
-Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
+Os totais de vacinas aplicadas e de internações em cada mês foram convertidos em taxas calculando-se a proporção entre os totais mensais e a população total de idosos por AP (considerando as populações residentes em 2010).
+As taxas de internação receberam o ajuste de unidade para representar taxa por 100 habitantes.
+
 Os valores numéricos referentes aos meses de 2021 foram convertidos para datas putativas (primeiro dia de cada mês) para viabilizar a visualização das curvas de tendência na escala temporal de forma interpretável.
 
 Considerando três faixas etárias, em dez AP, contabilizando três etapas do esquema vacinal durante 12 meses, o tamanho teórico da tabela de dados seria equivalente a 1080 observações.
