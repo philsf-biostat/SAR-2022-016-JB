@@ -200,8 +200,8 @@ Esta análise será realizada utilizando-se o software `R` versão `r getRversio
 **Perfil epidemiológico estático**
 
 Os dados utilizados para a descrição do perfil epidemiológico dos idosos neste estudo vêm do Censo 2010, e portando não variam ao longo do ano de 2021.
-Por este motivo, não será possível utilizar o sexo e o tamanho da população como covariáveis para ajustar a incidência de casos de SRAG.
-Por este motivo apenas o número de casos será reportado nesta análise.
+Por este motivo, não será possível utilizar nem o sexo tampouco o tamanho da população como covariáveis para ajustar a incidência de casos de SRAG.
+Por este motivo apenas as taxas de casos será reportado nesta análise.
 
 **Censo desatualizado**
 
