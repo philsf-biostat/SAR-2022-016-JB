@@ -172,7 +172,7 @@ Todas as análises inferenciais serão realizadas com base nos modelos estatíst
 
 Modelos de regressão linear múltipla serão usados para estimar a associação entre a taxa mensal de cobertura vacinal e a taxa de internação por SRAG.
 Para avaliar o impacto de cada covariável usada no controle, planeja-se criar diversos modelos em complexidade crescente.
-A estimativa bruta da associação entre a cobertura vacinal e a taxa de internações será avaliada com uma regressão linear simples.
+A estimativa bruta da associação entre a cobertura vacinal como variável independente e a taxa de internações como variável dependente será avaliada com uma regressão linear simples.
 Outros modelos acrescentarão a a AP, a AP e a faixa etária, e a etapa do esquema vacinal (dose 1, dose 2 ou única e dose de reforço) como variáveis de controle.
 O modelo final incluirá a cobertura vacinal como variável independente e todas as variáveis acima como variáveis de controle.
 
