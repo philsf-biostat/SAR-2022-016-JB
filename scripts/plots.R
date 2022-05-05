@@ -53,8 +53,8 @@ gg.f1 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
   theme_ff()
 
 gg.f2 <- analytical %>%
@@ -73,8 +73,8 @@ gg.f2 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
   theme_ff()
 
 gg.f3 <- analytical %>%
@@ -93,8 +93,20 @@ gg.f3 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
+  theme_ff()
+
+gg_interna <- analytical %>%
+  select(-dose, -vacinacao) %>%
+  distinct() %>%
+  ggplot() +
+  facet_wrap(~ ap_resid, ncol = facetcol) +
+  labs(color = NULL, x = "") +
+  # scale_y_log10(labels = scales::label_number_auto()) +
+  geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
+  scale_color_brewer(palette = "Reds") +
+  ylab(attr(analytical$internacoes, "label")) +
   theme_ff()
 
 # obsolete ----------------------------------------------------------------
@@ -136,15 +148,6 @@ gg.f3 <- analytical %>%
 # #   facet_wrap(~ ap_resid, ncol = facetcol) +
 # #   labs(color = NULL, x = "") +
 # #   theme_ff()
-# 
-# gg_int <- analytical %>%
-#   select(-dose, -vacinacao) %>%
-#   distinct() %>%
-#   ggplot() +
-#   facet_wrap(~ ap_resid, ncol = facetcol) +
-#   labs(color = NULL, x = "") +
-#   theme_ff()
-# 
 # gg_f0_2x <- analytical %>%
 #   filter(dose == "d2") %>%
 #   group_by(ap_resid, mes) %>%
@@ -157,12 +160,6 @@ gg.f3 <- analytical %>%
 #     x = "",
 #     subtitle = "Esquema vacinal completo (D2 ou DU)") +
 #   theme_ff()
-# 
-# gg_interna <- gg_int +
-#   # scale_y_log10(labels = scales::label_number_auto()) +
-#   geom_line(aes(mes, internacoes, color = fe), lwd = lwd, alpha = alpha) +
-#   scale_color_brewer(palette = "Reds") +
-#   ylab(attr(analytical$internacoes, "label"))
 # 
 # gg_d1_vac <- gg_d1 +
 #   geom_line(aes(mes, vacinacao, color = fe), lwd = lwd, alpha = alpha) +
