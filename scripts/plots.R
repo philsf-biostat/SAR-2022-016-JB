@@ -53,8 +53,8 @@ gg.f1 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd) +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
   theme_ff()
 
 gg.f2 <- analytical %>%
@@ -73,8 +73,8 @@ gg.f2 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd) +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
   theme_ff()
 
 gg.f3 <- analytical %>%
@@ -93,8 +93,8 @@ gg.f3 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = vacinacao, color = dose)) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4") +
+  geom_line(aes(y = vacinacao, color = dose), lwd = lwd) +
+  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
   theme_ff()
 
 # obsolete ----------------------------------------------------------------
