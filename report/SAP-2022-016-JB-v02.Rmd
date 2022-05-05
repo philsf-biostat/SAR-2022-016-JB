@@ -67,11 +67,11 @@ Quantificar a associação entre as as taxas de internação hospitalar por SRAG
 
 ## Hipóteses
 
-O aumento da taxa de vacinação está associado com uma redução do número de internações por SRAG em idosos.
+A cobertura da vacinação contra COVID-19 está associada com a taxa de internações por qualquer SRAG em idosos.
 
 ## Desenho do estudo
 
-Ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
+Estudo ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
 
 # Dados
 
@@ -97,8 +97,9 @@ A tabela de dados de perfil epidemiológico foi mantida separada da tabela anal�
 
 ## Tabela de dados analíticos
 
-Todas as variáveis da tabela de dados analíticos foram identificadas de acordo com as descrições das variáveis, e os valores foram identificados de acordo com o dicionário de dados providenciado.
-Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
+Os totais de vacinas aplicadas e de internações em cada mês foram convertidos em taxas calculando-se a proporção entre os totais mensais e a população total de idosos por AP (considerando as populações residentes em 2010).
+As taxas de internação receberam o ajuste de unidade para representar taxa por 100 habitantes.
+
 Os valores numéricos referentes aos meses de 2021 foram convertidos para datas putativas (primeiro dia de cada mês) para viabilizar a visualização das curvas de tendência na escala temporal de forma interpretável.
 
 Considerando três faixas etárias, em dez AP, contabilizando três etapas do esquema vacinal durante 12 meses, o tamanho teórico da tabela de dados seria equivalente a 1080 observações.
@@ -116,11 +117,18 @@ analytical_mockup %>%
   pander(caption = "**Tabela 1** Estrutura da tabela de dados analíticos após seleção e limpeza das variáveis.")
 ```
 
+Todas as variáveis da tabela de dados analíticos foram identificadas de acordo com as descrições das variáveis, e os valores foram identificados de acordo com o dicionário de dados providenciado.
+Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
+
 # Parâmetros do estudo
 
 ## Critérios de inclusão e exclusão
 
+N/A
+
 ## Exposições
+
+Taxa de cobertura mensal de vacinação contra COVID-19.
 
 ## Desfechos
 
@@ -133,11 +141,11 @@ analytical_mockup %>%
 
 **Desfecho primário**
 
-Número total de internações por SRAG em idosos.
+Taxa de internações por qualquer SRAG em idosos, por 100 habitantes.
 
 ## Covariáveis
 
-N/A
+A direção e força da associação entre a cobertura da vacinação contra COVID-19 serão controladas pela faixa etária, etapa do esquema vacinal (dose 1, dose 2 ou única e dose de reforço) e pela estrutura geográfica definida pela AP de residência.
 
 # Métodos estatísticos
 
@@ -152,17 +160,16 @@ serão descritas como
 total de residentes em cada AP.
 
 As tendências de vacinação e de internações em cada AP serão resumidas em tabelas e visualizadas em gráficos exploratórios.
-As curvas de tendência de internação hospitalar de cada uma das dez APs serão criadas para cada etapa do esquema vacinal (dose 1, dose 2 e dose de reforço), estratificando por faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais).
+As curvas de tendência de internação hospitalar de cada uma das dez APs serão criadas para cada uma das faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais), estratificando por etapa do esquema vacinal (dose 1, dose 2 e dose de reforço).
 
-A associação entre os totais de vacinados e de internações em cada AP será mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman.
+<!-- A associação entre os totais de vacinados e de internações em cada AP será mensurada com o coeficiente de correlação linear de Pearson, ou a correlação de Spearman. -->
 
 ### Análise inferencial
 
-N/A
+Todas as análises inferenciais serão realizadas com base nos modelos estatísticos (descritos na próxima seção).
 
 ### Modelagem estatística
 
-N/A
 
 ### Dados faltantes
 
