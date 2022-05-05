@@ -102,9 +102,15 @@ Nenhuma observação adicional foi excluída nesta etapa.
 
 # Metodologia
 
-## Variáveis
+## Parâmetros do estudo
 
-### Desfecho primário
+### Desenho do estudo
+
+### Critérios de inclusão e exclusão
+
+### Exposições
+
+### Desfechos
 
 Número total de internações por SRAG em idosos.
 
@@ -454,17 +460,18 @@ knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 
 ## Disponibilidade
 
-Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v02**) podem ser obtidos no seguinte endereço:
+Todos os documentos gerados nessa consultoria foram incluídos no portfólio do consultor.
 
-<!-- Este documento pode ser obtido no seguinte endereço: -->
-
-<https://philsf-biostat.github.io/SAR-2022-016-JB/>
+<!-- O cliente solicitou que esta análise seja mantida confidencial até uma futura data, determinada pelo próprio cliente. -->
+<!-- Todos os documentos gerados nessa consultoria portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
+<!-- Após a data acordada, os documentos serão disponibilizados. -->
 
 <!-- O cliente solicitou que esta análise seja mantida confidencial. -->
-<!-- Tanto este documento como o plano analítico correspondente (**SAP-2022-016-JB-v02**) portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
-<!-- O portfólio pode ser visto em: -->
+<!-- Todos os documentos gerados nessa consultoria portanto não foram publicados online e apenas o título e o ano da análise foram incluídas no portfólio do consultor. -->
 
-<!-- <https://philsf-biostat.github.io/> -->
+O portfólio pode ser visto em:
+
+<https://philsf-biostat.github.io/SAR-2022-016-JB/>
 
 ## Dados utilizados
 
