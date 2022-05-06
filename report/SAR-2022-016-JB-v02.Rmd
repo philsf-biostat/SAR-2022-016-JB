@@ -69,7 +69,7 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 ## Objetivos
 
-Quantificar a associação entre as as taxas de internação hospitalar por SRAG e a cobertura mensal da vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
+Quantificar a associação entre as taxas de internação hospitalar por SRAG e a cobertura mensal da vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
 ## Recepção e tratamento dos dados
 
