@@ -230,21 +230,21 @@ As tendências das curvas de vacinação e a associação com os números de int
 
 ### Idosos `r f1`
 
-```{r fig2, fig.cap="**Figura 2** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 `r f1` nas AP do município do Rio de Janeiro."}
+```{r fig2, fig.cap="**Figura 2** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 60-69 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f1.png", error = FALSE)
 ```
 
 ### Idosos `r f2`
 
-```{r fig3, fig.cap="**Figura 3** Aplicação da dose 2 (ou dose única) da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
+```{r fig3, fig.cap="**Figura 3** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 70-79 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```
 
 ### Idosos `r f3`
 
-```{r fig4, fig.cap="**Figura 4** Aplicação da dose de reforço da vacina de COVID-19 de idosos em 2021 nas AP do município do Rio de Janeiro."}
+```{r fig4, fig.cap="**Figura 4** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 80 anos ou mais nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f3.png", error = FALSE)
 ```
