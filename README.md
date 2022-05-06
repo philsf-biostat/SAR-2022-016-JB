@@ -1,30 +1,32 @@
 # Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
 
-Correlacionar as tendências de internação hospitalar por SRAG e vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
+Quantificar a associação entre as taxas de internação hospitalar por SRAG e a cobertura mensal da vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
 Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 
 ## Análises realizadas
 
 1. Análise descritiva
+1. Análise inferencial
+1. Modelagem estatística
 
 ## Documentos
 
 ### Plano Analítico (SAP)
 
-<!-- - [Visualização online][sapviz-v02] -->
-<!-- - [PDF][sappdf-v02] -->
+- [Visualização online][sapviz-v02]
+- [PDF][sappdf-v02]
 
-- [Visualização online][sapviz-v01]
-- [PDF][sappdf-v01]
+<!-- - [Visualização online][sapviz-v01] -->
+<!-- - [PDF][sappdf-v01] -->
 
 ### Relatório de Análise Estatística (SAR)
 
-<!-- - [Visualização online][reportviz-v02] -->
-<!-- - [PDF][pdf-v02] -->
+- [Visualização online][reportviz-v02]
+- [PDF][pdf-v02]
 
-- [Visualização online][reportviz-v01]
-- [PDF][pdf-v01]
+<!-- - [Visualização online][reportviz-v01] -->
+<!-- - [PDF][pdf-v01] -->
 
 <!-- ## Análises associadas -->
 

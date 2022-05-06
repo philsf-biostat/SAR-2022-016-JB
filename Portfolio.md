@@ -20,6 +20,8 @@ Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 ## Análises realizadas
 
 1. Análise descritiva
+1. Análise inferencial
+1. Modelagem estatística
 
 ## Documentos
 
@@ -41,5 +43,5 @@ Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 
 <!-- --- -->
 
-[sap]: /files/SAP-2022-016-JB-v01.pdf
-[sar]: /files/SAR-2022-016-JB-v01.pdf
+[sap]: /files/SAP-2022-016-JB-v02.pdf
+[sar]: /files/SAR-2022-016-JB-v02.pdf
