@@ -42,8 +42,8 @@ panderOptions('table.split.table', 160)
 **Histórico do documento**
 
 ```{r history}
-Version <- c("01")
-Changes <- c("Versão inicial")
+Version <- c("01", "02")
+Changes <- c("Versão inicial", "Nova metodologia estatística usando regressão linear múltipla")
 history <- cbind(Version, Changes)
 colnames(history) <- c("Versão", "Alterações")
 # pander(history, split.cells = 70)
