@@ -305,10 +305,12 @@ as ondas de internações por SRAG.
 
 ## Associação entre internações e vacinação
 
+Foram ajustados quatro modelos de regressão linear múltipla para avaliar a associação entre a cobertura vacinal mensal de COVID-19 e as taxas mensais de internação por SRAG.
+
 ```{r tab_mod}
 tab_mod %>%
   as_kable(
-    caption = "**Tabela xx** caption."
+    caption = "**Tabela 2** Associação entre cobertura vacinal mensal contra COVID-19 e taxas de internação por SRAG (por 100 habitantes) em 2021."
   )
 ```
 
@@ -362,7 +364,7 @@ knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 ```{r tab_app}
 tab_app %>%
   as_kable(
-    caption = "**Tabela A1** caption."
+    caption = "**Tabela A1** Associação entre cobertura vacinal mensal contra COVID-19 e taxas de internação por SRAG (por 100 habitantes) em 2021."
   )
 ```
 
