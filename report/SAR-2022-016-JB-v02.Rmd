@@ -205,7 +205,7 @@ por 100 habitantes, observada na AP 3.3 no mês de abril.
 A menor taxa de internações foi
 `r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique() %>% fn(digits = 3)`
 (por 100) observada na AP 2.2 em novembro.
-Ao todo as o município do Rio de Janeiro observou uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações por 100 habitantes ao longo de 2021.
+Ao todo, o município do Rio de Janeiro observou uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações por 100 habitantes ao longo de 2021.
 
 A figura 1 mostra as tendências de internações por SRAG nas dez AP ao longo de 2021 segregando as faixas etárias de idosos.
 Observa-se duas ondas distintas de internações afetando similarmente as três faixas etárias consideradas no estudo, a primeira entre os meses de março e abril e a segunda entre os meses de agosto e setembro.
@@ -228,11 +228,11 @@ ao longo do ano de 2021.
 A AP com maior número absoluto de vacinações aplicadas foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
 Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
-Globalmente, as dez AP observaram uma média mensal de
-`r analytical %>% pull(vacinacao) %>% mean() %>% fn()` aplicações de vacinas
-ao longo de 2021.
 
-As tendências das curvas de vacinação e a associação com os números de internações por SRAG serão explorados nas próximas seções.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+<!-- As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções. -->
 
 ### Idosos `r f1`
 
