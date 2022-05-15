@@ -205,7 +205,7 @@ por 100 habitantes, observada na AP 3.3 no mês de abril.
 A menor taxa de internações foi
 `r analytical %>% slice_min(internacoes) %>% pull(internacoes) %>% unique() %>% fn(digits = 3)`
 (por 100) observada na AP 2.2 em novembro.
-Ao todo as o município do Rio de Janeiro observou uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações por 100 habitantes ao longo de 2021.
+Ao todo, o município do Rio de Janeiro observou uma média mensal de `r analytical %>% pull(internacoes) %>% mean() %>% fn()` internações por 100 habitantes ao longo de 2021.
 
 A figura 1 mostra as tendências de internações por SRAG nas dez AP ao longo de 2021 segregando as faixas etárias de idosos.
 Observa-se duas ondas distintas de internações afetando similarmente as três faixas etárias consideradas no estudo, a primeira entre os meses de março e abril e a segunda entre os meses de agosto e setembro.
@@ -228,32 +228,80 @@ ao longo do ano de 2021.
 A AP com maior número absoluto de vacinações aplicadas foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`.
 Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
-Globalmente, as dez AP observaram uma média mensal de
-`r analytical %>% pull(vacinacao) %>% mean() %>% fn()` aplicações de vacinas
-ao longo de 2021.
 
-As tendências das curvas de vacinação e a associação com os números de internações por SRAG serão explorados nas próximas seções.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+<!-- As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções. -->
 
 ### Idosos `r f1`
 
-```{r fig2, fig.cap="**Figura 2** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 60-69 nas AP do município do Rio de Janeiro."}
+Quando consideramos apenas a faixa etária de
+`r f1`
+observamos as etapas do esquema vacinal em ondas distintas.
+O pico do esforço vacinal da primeira dose ocorreu em
+abril,
+da segunda dose (ou dose única) em
+julho e
+da dose de reforço
+entre outubro e novembro.
+
+```{r fig2, fig.cap="**Figura 2** Cobertura vacinal mensal contra COVID-19 e taxa de internação de idosos em 2021 60-69 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f1.png", error = FALSE)
 ```
 
+No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
+`r cvi[1, 2]`,
+indicando que as ondas de esforço vacinal acompanharam
+fracamente
+as ondas de internações por SRAG.
+
 ### Idosos `r f2`
 
-```{r fig3, fig.cap="**Figura 3** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 70-79 nas AP do município do Rio de Janeiro."}
+Quando consideramos apenas a faixa etária de
+`r f2`
+observamos as etapas do esquema vacinal em ondas distintas.
+O pico do esforço vacinal da primeira dose ocorreu em
+março,
+da segunda dose (ou dose única) em
+abril e
+da dose de reforço
+em outubro.
+
+```{r fig3, fig.cap="**Figura 3** Cobertura vacinal mensal contra COVID-19 e taxa de internação de idosos em 2021 70-79 nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```
 
+No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
+`r cvi[2, 2]`,
+indicando que as ondas de esforço vacinal acompanharam
+moderadamente
+as ondas de internações por SRAG.
+
 ### Idosos `r f3`
 
-```{r fig4, fig.cap="**Figura 4** Cobertura vacinal da vacina de COVID-19 e taxa de internação de idosos em 2021 80 anos ou mais nas AP do município do Rio de Janeiro."}
+Quando consideramos apenas a faixa etária de
+`r f2`
+observamos as etapas do esquema vacinal em ondas distintas.
+O pico do esforço vacinal da primeira dose ocorreu
+em fevereiro,
+da segunda dose (ou dose única)
+entre março e maio
+e da dose de reforço
+em setembro.
+
+```{r fig4, fig.cap="**Figura 4** Cobertura vacinal mensal contra COVID-19 e taxa de internação de idosos em 2021 80 anos ou mais nas AP do município do Rio de Janeiro."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f3.png", error = FALSE)
 ```
+
+No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
+`r cvi[3, 2]`,
+indicando que as ondas de esforço vacinal acompanharam
+fracamente
+as ondas de internações por SRAG.
 
 ## Associação entre internações e vacinação
 
