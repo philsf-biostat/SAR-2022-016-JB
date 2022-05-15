@@ -343,24 +343,27 @@ Por este motivo apenas o número de casos foi reportado nesta análise.
 
 As figuras A1 e A2 mostram os histogramas das duas principais variáveis da análise.
 
-```{r figA1, fig.cap="**Figura A1** caption"}
+```{r figA1, fig.cap="**Figura A1** Histograma das taxas mensais de internação por SRAG, por AP."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/hist_int.png", error = FALSE)
 ```
 
 Destaca-se a grande variabilidade do esforço vacinal, onde o
-DP (`r analytical %>% pull(vacinacao) %>% sd() %>% format.float(digits = 0)` aplicações de vacinas)
-é consideravelmente maior que a média.
-Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões.
-O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
-As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
-A distribuição das vacinações mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
-<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
+DP `r analytical %>% pull(vacinacao) %>% sd() %>% fn(digits = 2)`
+é consideravelmente maior que a
+média `r analytical %>% pull(vacinacao) %>% mean() %>% fn(digits = 2)`.
+Isso indica baixa consistência com que este esforço foi aplicado com sucesso nas populações destas regiões ao longo do ano.
+Este fato pode ser observado nas figuras 2-4, onde o esforço vacinal ocorreu em ondas distintas, ao invés de um esforço constante ao longo do período.
 
-```{r figA2, fig.cap="**Figura A2** caption"}
+```{r figA2, fig.cap="**Figura A2** Histograma da cobertura vacinal mensal contra COVID-19, por AP."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/hist_vac.png", error = FALSE)
 ```
+
+O CV da vacinação é `r format.pct(cv$vac)` enquanto que o CV das internações é `r format.pct(cv$int)`.
+As distribuições destas duas variáveis podem ser visualizadas nas figuras A1 e A2 no apêndice.
+A distribuição das coberturas vacinais mensais nas AP tem forte concentração à esquerda com longa cauda à direita, exibindo características de uma distribuição Log-Normal.
+<!-- Para estabilizar estas distribuições, as análises das seções seguintes utilizarão escala logarítmica para interpretar esta variável. -->
 
 ## Estratégia de modelagem
 
