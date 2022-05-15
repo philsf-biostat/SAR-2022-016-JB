@@ -306,6 +306,9 @@ as ondas de internações por SRAG.
 ## Associação entre internações e vacinação
 
 Foram ajustados quatro modelos de regressão linear múltipla para avaliar a associação entre a cobertura vacinal mensal de COVID-19 e as taxas mensais de internação por SRAG.
+A estimativa bruta considera apenas a cobertura vacinal como fator de proteção contra a internação por SRAG.
+A inclinação da regressão linear é positiva, estimada em 0,13 (variando entre 0,10 e 0,16, significativamente acima de zero), indicando que cada 1% a mais na cobertura por COVID está associada com um incremento de 13% na taxa de internação por SRAG.
+Ao controlar pela estrutura geográfica (aqui mensurada pelas taxas em cada AP) a associação diminui para 0,12 (enter 0,09 e 0,15) e o mesmo ocorre ao estratificar por faixa etária.
 
 ```{r tab_mod}
 tab_mod %>%
