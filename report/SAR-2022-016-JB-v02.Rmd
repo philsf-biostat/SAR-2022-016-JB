@@ -316,15 +316,24 @@ as ondas de internações por SRAG.
 ## Relação entre internações por SRAG e vacinação contra COVID-19
 
 Foram ajustados quatro modelos de regressão linear múltipla para avaliar a associação entre a cobertura vacinal mensal de COVID-19 e as taxas mensais de internação por SRAG.
-Todos os modelos resultaram em uma associação positiva entre a vacinação contra COVID-19 e as taxas de internação por SRAG.
-Isto indica que as tendências de vacinação acompanham as tendências de internações.
+Isto indica que um aumento na cobertura vacinal contra COVID-19 estão associadas com diminuições nas taxas de internação por SRAG.
 
-A estimativa bruta considera apenas a cobertura vacinal como fator de proteção contra a internação por SRAG.
-A inclinação da regressão linear é positiva, estimada em 0,13 (variando entre 0,10 e 0,16, significativamente acima de zero), indicando que cada 1% a mais na cobertura por COVID está associada com um incremento de 13% na taxa de internação por SRAG.
-Ao controlar pela estrutura geográfica (aqui mensurada pelas taxas em cada AP) a associação diminui para 0,12 (enter 0,09 e 0,15) e o mesmo ocorre ao estratificar por faixa etária.
+A estimativa inicial avalia a cobertura vacinal como fator de proteção contra a internação por SRAG, mas ocorreu de forma não constante ao longo dos meses de 2021.
+São consideradas nesta estimativa as diferentes doses e a estrutura temporal dos dados, isolando as contribuições de cada diferente dose de vacina aplicadas em cada mês.
+A inclinação da regressão linear é negativa, estimada em
+`r coef(m0)[2] %>% fn` (variando entre `r confint(m0)[2,1] %>% fn` e `r confint(m0)[2,2] %>% fn`, significativamente acima de zero).
+Isto pode ser interpretado como: cada acréscimo de 1% na cobertura vacinal está associada com um decréscimo de
+`r coef(m0)[2] %>% abs %>% fn`
+na taxa de internação por SRAG.
 
-O modelo final inclui simultaneamente, além destas duas variáveis, a dose aplicada em cada mês.
-A inclinação da cobertura vacinal neste modelo é 0,13 (de 0,10 a 0,16).
+Ao controlar pela estrutura geográfica (aqui representada pelas AP) a redução na taxa de internações é levemente alterada para
+`r coef(m1)[2] %>% fn` (entre `r confint(m1)[2,1] %>% fn` e `r confint(m1)[2,2] %>% fn`).
+Ao controlar pela estrutura etária da população idosa a redução na taxa de internações sobre uma alteração de maior magnitude para
+`r coef(m2)[2] %>% fn` (entre `r confint(m2)[2,1] %>% fn` e `r confint(m2)[2,2] %>% fn`).
+
+O modelo final incorpora a estrutura longidutinal do esforço vacinal, controlando pelas estruturas geográfica e etária dos idosos.
+A inclinação da cobertura vacinal neste modelo é
+`r coef(m4)[2] %>% fn` (entre `r confint(m4)[2,1] %>% fn` e `r confint(m4)[2,2] %>% fn`).
 
 ```{r tab_mod}
 tab_mod %>%
