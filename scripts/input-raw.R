@@ -128,12 +128,20 @@ vac <- vac %>%
     ),
   )
 
+# ## expandir a base de dados para todos os meses, doses e faixas etárias
+# vac <- vac %>%
+#   complete(dose, fe, mes)
+
 vac <- vac %>%
   pivot_longer(-c(dose, fe, mes), names_to = "ap_resid", values_to = "vacinacao") %>%
   mutate(
     ap_resid = str_remove(ap_resid, "cap"),
     ap_resid = format.float(as.numeric(ap_resid)/10, digits = 1),
   )
+
+# ## preencher os valores faltantes de dr
+# vac <- vac %>%
+#   replace_na(replace = list(vacinacao = 0))
 
 p1 <- p1 %>%
   rename(sexo = x1) %>%
