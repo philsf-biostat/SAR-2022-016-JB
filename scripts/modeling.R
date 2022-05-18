@@ -34,7 +34,7 @@ m4 <- lm(internacoes ~ vacinacao * dose * tempo + fe + ap_resid,
 
 # report table ------------------------------------------------------------
 
-m0_lab <- "Estimativa bruta"
+m0_lab <- "Vacinação"
 m1_lab <- "Controlada por AP"
 m2_lab <- "Controlada por faixa etária"
 m3_lab <- "Controlada por etapa do esquema vacinal"
