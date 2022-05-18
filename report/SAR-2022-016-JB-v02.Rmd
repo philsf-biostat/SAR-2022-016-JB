@@ -357,25 +357,6 @@ Naturalmente ao controlar por ambas covariáveis a estimativa final é substanci
 Adicionalmente o R2 ajustado do modelo final é maior que o observado no modelo inicial, indicando melhor ajuste aos dados e maior poder de explicação.
 É importante lembrar que as internações sob análise não são exclusivamente de COVID-19, mas todas as SRAG.
 
-```{r}
-pred <- tibble(vacinacao = c(.01, .02), dose = "d1", fe = f1, ap_resid = "1.0", tempo = 1) %>% predict(m4 , newdata = .)
-```
-
-A taxa de internações basal do modelo é
-`r coef(m4)[1] %>% fn`,
-que representa o valor esperado da taxa de internações
-na faixa etária de `r f1`
-na AP 1.0
-na ausência de vacinação no mês de janeiro.
-Considerando esta referência basal, e a inclinação de
-`r coef(m4)[2] %>% fn`
-na cobertura vacinal, a taxa internaçõespor SRAG por 100 pessoas esperada seja
-`r pred[1] %>% fn(3)`
-com 1% de cobertura vacinal naquele mês na população de 60-69 anos da AP 1.0 e 
-`r pred[2] %>% fn(3)`
-com 2% de cobertura.
-Pode-se realizar os cálculos preditivos análogos para outras combinações de fatores a partir da equação definida pelo modelo (ver Apêndice).
-
 # Observações e limitações
 
 **Perfil epidemiológico estático**
@@ -426,12 +407,35 @@ A distribuição das coberturas vacinais mensais nas AP tem forte concentração
 
 ## Estratégia de modelagem
 
+A tabela A1 exibe os coeficientes estimados para os modelos ajustados nesta análise.
+
 ```{r tab_app}
 tab_app %>%
   as_kable(
     caption = "**Tabela A1** Associação entre cobertura vacinal mensal contra COVID-19 e taxas de internação por SRAG (por 100 habitantes) em 2021."
   )
 ```
+
+```{r}
+pred <- tibble(vacinacao = c(.01, .02), dose = "d1", fe = f1, ap_resid = "1.0", tempo = 1) %>% predict(m4 , newdata = .)
+```
+
+A taxa de internações basal do modelo final é
+`r coef(m4)[1] %>% fn`,
+que representa o valor esperado da taxa de internações
+na faixa etária de `r f1`
+na AP 1.0
+na ausência de vacinação no mês de janeiro.
+Considerando esta referência basal, e a inclinação de
+`r coef(m4)[2] %>% fn`
+na cobertura vacinal, a taxa internaçõespor SRAG por 100 pessoas esperada seja
+`r pred[1] %>% fn(3)`
+com 1% de cobertura vacinal naquele mês na população de 60-69 anos da AP 1.0 e 
+`r pred[2] %>% fn(3)`
+com 2% de cobertura.
+
+Pode-se realizar os cálculos preditivos análogos para outras combinações de fatores a partir da equação definida pelo modelo.
+A equação definida é: $internacoes = 0,15 + vacinacao \times dose \times tempo + faixa\_etaria + ap$.
 
 ## Disponibilidade
 
