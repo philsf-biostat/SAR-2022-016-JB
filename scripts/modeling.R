@@ -6,20 +6,30 @@ library(broom)
 # library(simputation)
 # library(mice)
 
+analytical <- analytical %>%
+  mutate(
+    # criar variável tempo, com mesmos atributos de "mes"
+    tempo = month(mes),
+    # vacinacao = vacinacao*100, # quanto 1% de cobertura altera a taxa de internação?
+    # internacoes = internacoes*100, # a escala é a mesma, que sorte!
+  ) %>%
+  # rotular nova variável
+  set_variable_labels(tempo = "Tempo")
+
 # raw estimate ------------------------------------------------------------
 
-m0 <- lm(internacoes ~ vacinacao,
+m0 <- lm(internacoes ~ vacinacao * dose * tempo,
          analytical)
 
 # adjusted ----------------------------------------------------------------
 
-m1 <- lm(internacoes ~ vacinacao + ap_resid,
+m1 <- lm(internacoes ~ vacinacao * dose * tempo + ap_resid,
          analytical)
-m2 <- lm(internacoes ~ vacinacao + fe,
+m2 <- lm(internacoes ~ vacinacao * dose * tempo + fe,
          analytical)
-m3 <- lm(internacoes ~ vacinacao + dose,
+m3 <- lm(internacoes ~ (vacinacao + dose)*tempo,
          analytical)
-m4 <- lm(internacoes ~ vacinacao + ap_resid + fe + dose,
+m4 <- lm(internacoes ~ vacinacao * dose * tempo + fe + ap_resid,
          analytical)
 
 # report table ------------------------------------------------------------
@@ -48,13 +58,14 @@ m4_lab <- "Modelo final (completo)"
 #   m2 %>% tbl_regression(),
 #   # m3 %>% tbl_regression(),
 #   m4 %>% tbl_regression()
-# ), c(
-#   m0_lab,
-#   m1_lab,
-#   m2_lab,
-#   # m3_lab,
-#   m4_lab
-# ))
+#   ), c(
+#     m0_lab,
+#     m1_lab,
+#     m2_lab,
+#     # m3_lab,
+#     m4_lab
+#     )
+#   )
 # 
 # write_rds(tab_app, "dataset/tab_app.rds")
 
