@@ -371,11 +371,17 @@ Além do mencionado acima, os dados que descrevem o perfil estão desatualizados
 Isto introduziria um risco de viés em estimativas de incidência de SRAG pois, se a população atual for maior que a população descrita em 2010, a taxa de incidência com base nos casos de 2021 será menor que o avaliado com os dados disponíveis.
 Por este motivo apenas o número de casos foi reportado nesta análise.
 
+**Guideline recomendado de relato completo**
+
+A adoção dos guidelines de relato da rede EQUATOR (<http://www.equator-network.org/>) têm sido ampliada em revistas científicas.
+Recomenda-se que todos os estudos observacionais sigam o guideline STROBE (von Elm et al, 2014).
+
 # Conclusões
 
 # Referências
 
 - **SAP-2022-016-JB-v02** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
+- von Elm E, Altman DG, Egger M, Pocock SJ, Gøtzsche PC, Vandenbroucke JP; STROBE Initiative. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: guidelines for reporting observational studies. Int J Surg. 2014 Dec;12(12):1495-9 (<https://doi.org/10.1016/j.ijsu.2014.07.013>).
 
 # Apêndice
 
