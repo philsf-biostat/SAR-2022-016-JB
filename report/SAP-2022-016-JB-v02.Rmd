@@ -67,7 +67,7 @@ Quantificar a associação entre as taxas de internação hospitalar por SRAG e 
 
 ## Hipóteses
 
-A cobertura da vacinação contra COVID-19 está associada com a taxa de internações por qualquer SRAG em idosos.
+Um aumento na cobertura vacinal contra COVID-19, considerada mensalmente, está associada com uma alteração na taxa de internações por qualquer SRAG em idosos.
 
 ## Desenho do estudo
 
