@@ -20,7 +20,7 @@ gg <- analytical %>%
 # plots -------------------------------------------------------------------
 
 gg.outcome <- gg +
-  geom_histogram(aes(internacoes), bins = 6, fill = "firebrick4") +
+  geom_histogram(aes(internacoes, ..count../3), bins = 6, fill = "firebrick4") +
   # scale_x_log10(labels = scales::label_number_auto()) +
   labs(
     subtitle = attr(analytical$internacoes, "label"),

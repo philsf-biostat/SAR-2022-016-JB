@@ -57,6 +57,10 @@ pct_ap <- perfil %>%
 cv <- analytical %>%
   summarise(vac = sd(vacinacao)/mean(vacinacao), int = sd(internacoes)/mean(internacoes))
 
+cvi <- analytical %>%
+  filter(dose == "d2") %>%
+  group_by(fe) %>% summarise(cor(internacoes, vacinacao) %>% fn())
+
 # análise descritiva ------------------------------------------------------
 
 tab_perfil <- perfil %>%

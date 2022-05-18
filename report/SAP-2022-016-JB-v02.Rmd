@@ -67,11 +67,11 @@ Quantificar a associação entre as taxas de internação hospitalar por SRAG e 
 
 ## Hipóteses
 
-A cobertura da vacinação contra COVID-19 está associada com a taxa de internações por qualquer SRAG em idosos.
+Um aumento na cobertura vacinal contra COVID-19, considerada mensalmente, está associada com uma alteração na taxa de internações por qualquer SRAG em idosos.
 
 ## Desenho do estudo
 
-Estudo ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
+Estudo ecológico longitudinal, com dados agregados das dez AP do município do Rio de Janeiro.
 
 # Dados
 
@@ -128,7 +128,7 @@ N/A
 
 ## Exposições
 
-Taxa de cobertura mensal de vacinação contra COVID-19.
+Cobertura vacinal mensal de vacinação contra COVID-19.
 
 ## Desfechos
 
@@ -170,11 +170,20 @@ Todas as análises inferenciais serão realizadas com base nos modelos estatíst
 
 ### Modelagem estatística
 
-Modelos de regressão linear múltipla serão usados para estimar a associação entre a taxa mensal de cobertura vacinal e a taxa de internação por SRAG.
-Para avaliar o impacto de cada covariável usada no controle, planeja-se criar diversos modelos em complexidade crescente.
-A estimativa bruta da associação entre a cobertura vacinal como variável independente e a taxa de internações como variável dependente será avaliada com uma regressão linear simples.
-Outros modelos acrescentarão a a AP, a AP e a faixa etária, e a etapa do esquema vacinal (dose 1, dose 2 ou única e dose de reforço) como variáveis de controle.
-O modelo final incluirá a cobertura vacinal como variável independente e todas as variáveis acima como variáveis de controle.
+Modelos de regressão linear múltipla serão usados para estimar a associação entre a cobertura vacinal mensal e a taxa de internação por SRAG.
+
+A estimativa inicial assume diferenças do efeito de cada dose na taxa de internações como variável dependente.
+Para considerar o efeito longitudinal das diferentes etapas do esquema vacinal, planeja-se incluir termos de interação entre as doses e as coberturas vacinais mensais.
+Além disso, para permitir que cada aplicação de doses diferentes varie independente das outras, uma variável indicadora do mês será incluída interagindo com ambos os termos.
+Esta estratégia permite isolar os efeitos de cobertura vacinal em cada dose ao longo do ano.
+
+Para avaliar os impactos da estrutura geográfica e da estrutura etária, planeja-se criar outros dois modelos, acrescentando cada a AP e a faixa etária em cada, como variável de controle.
+Esta abordagem permite isolar o impacto de cada covariável na estimativa inicial.
+
+O modelo final incluirá simultaneamente o componente longitudinal da cobertura vacinal como variável independente e as variáveis de controle.
+
+Por simplicidade apenas as inclinações da variável independente serão interpretadas, de forma descritiva.
+O modelo completo será apresentado no apêndice.
 
 ### Dados faltantes
 
@@ -209,11 +218,17 @@ Além do mencionado acima, os dados que descrevem o perfil estão desatualizados
 Isto introduziria um risco de viés em estimativas de incidência de SRAG pois, se a população atual for maior que a população descrita em 2010, a taxa de incidência com base nos casos de 2021 será menor que o avaliado com os dados disponíveis.
 Por este motivo apenas o número de casos será reportado nesta análise.
 
+**Guideline recomendado de relato completo**
+
+A adoção dos guidelines de relato da rede EQUATOR (<http://www.equator-network.org/>) têm sido ampliada em revistas científicas.
+Recomenda-se que todos os estudos observacionais sigam o guideline STROBE (von Elm et al, 2014).
+
 # Referências
 
 - **SAR-2022-016-JB-v02** -- Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
 - Zarin DA, et al. The ClinicalTrials.gov results database -- update and key issues. N Engl J Med 2011;364:852-60 (<https://doi.org/10.1056/NEJMsa1012065>).
 - Gamble C, et al. Guidelines for the Content of Statistical Analysis Plans in Clinical Trials. JAMA. 2017;318(23):2337–2343 (<https://doi.org/10.1001/jama.2017.18556>).
+- von Elm E, Altman DG, Egger M, Pocock SJ, Gøtzsche PC, Vandenbroucke JP; STROBE Initiative. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: guidelines for reporting observational studies. Int J Surg. 2014 Dec;12(12):1495-9 (<https://doi.org/10.1016/j.ijsu.2014.07.013>).
 
 # Apêndice
 

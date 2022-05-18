@@ -5,7 +5,7 @@ library(tidyverse)
 library(readxl)
 # library(haven)
 # library(foreign)
-# library(lubridate)
+library(lubridate)
 # library(naniar)
 library(labelled)
 
@@ -84,7 +84,7 @@ data.raw <- data.raw %>%
     ap_resid = "AP",
     mes = "Mês",
     internacoes = "Taxa de internações por SRAG (por 100)",
-    vacinacao = "Cobertura de vacinação contra COVID-19",
+    vacinacao = "Cobertura vacinal mensal contra COVID-19",
     dose = "Dose",
     fe = "Faixa etária",
   )

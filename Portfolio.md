@@ -13,7 +13,7 @@ tags:
   - incidence
 ---
 
-Correlacionar as tendências de internação hospitalar por SRAG e vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
+Quantificar a associação entre as taxas de internação hospitalar por SRAG e a cobertura mensal da vacinação de COVID-19 em idosos em cada área programática do município do Rio de Janeiro em 2021.
 
 Análise Estatística para Janaina Balmant (Mestrado ENSP/Fiocruz, 2022)
 

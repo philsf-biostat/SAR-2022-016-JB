@@ -1,12 +1,12 @@
 # setup -------------------------------------------------------------------
 height <- 16
-width <- 12
+width <- 14
 units <- "cm"
 
 # publication ready tables ------------------------------------------------
 
 # Don't need to version these files on git
-# tab_inf %>%
+# tab_mod %>%
 #   as_gt() %>%
 #   as_rtf() %>%
 #   writeLines(con = "report/SAR-2022-016-JB-v01-T2.rtf")
