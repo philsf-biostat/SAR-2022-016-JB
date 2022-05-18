@@ -134,11 +134,17 @@ foram descritas como
 total de residentes em cada AP.
 As tendências de vacinação e de internações em cada AP foram resumidas em tabelas e visualizadas em gráficos exploratórios.
 As curvas de tendência de internação hospitalar de cada uma das dez APs foram criadas para cada uma das faixas etárias (60 a 69 anos, 70 a 79 anos e 80 anos ou mais), estratificando por etapa do esquema vacinal (dose 1, dose 2 e dose de reforço).
-Modelos de regressão linear múltipla foram usados para estimar a associação entre a taxa mensal de cobertura vacinal e a taxa de internação por SRAG.
-Para avaliar o impacto de cada covariável usada no controle, planeja-se criar diversos modelos em complexidade crescente.
-A estimativa bruta da associação entre a cobertura vacinal como variável independente e a taxa de internações como variável dependente será avaliada com uma regressão linear simples.
-Outros modelos acrescentarão a a AP, a AP e a faixa etária, e a etapa do esquema vacinal (dose 1, dose 2 ou única e dose de reforço) como variáveis de controle.
-O modelo final incluirá a cobertura vacinal como variável independente e todas as variáveis acima como variáveis de controle.
+
+Modelos de regressão linear múltipla serão usados para estimar a associação entre a cobertura vacinal mensal e a taxa de internação por SRAG.
+A estimativa inicial assume diferenças do efeito de cada dose na taxa de internações como variável dependente.
+Para considerar o efeito longitudinal das diferentes etapas do esquema vacinal, planeja-se incluir termos de interação entre as doses e as coberturas vacinais mensais.
+Além disso, para permitir que cada aplicação de doses diferentes varie independente das outras, uma variável indicadora do mês será incluída interagindo com ambos os termos.
+Esta estratégia permite isolar os efeitos de cobertura vacinal em cada dose ao longo do ano.
+Para avaliar os impactos da estrutura geográfica e da estrutura etária, planeja-se criar outros dois modelos, acrescentando cada a AP e a faixa etária em cada, como variável de controle.
+Esta abordagem permite isolar o impacto de cada covariável na estimativa inicial.
+O modelo final incluirá simultaneamente o componente longitudinal da cobertura vacinal como variável independente e as variáveis de controle.
+Por simplicidade apenas as inclinações da variável independente serão interpretadas, de forma descritiva.
+O modelo completo será apresentado no apêndice.
 
 Todas as avaliações foram realizadas como análises de casos completos.
 Todas as análises foram realizadas ao nível de significância de 5%.
