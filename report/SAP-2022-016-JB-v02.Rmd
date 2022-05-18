@@ -71,7 +71,7 @@ A cobertura da vacinação contra COVID-19 está associada com a taxa de interna
 
 ## Desenho do estudo
 
-Estudo ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
+Estudo ecológico longitudinal, com dados agregados das dez AP do município do Rio de Janeiro.
 
 # Dados
 

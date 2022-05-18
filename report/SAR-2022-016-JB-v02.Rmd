@@ -107,7 +107,7 @@ Nenhuma observação adicional foi excluída nesta etapa.
 
 ### Desenho do estudo
 
-Estudo ecológico, com dados agregados das dez AP do município do Rio de Janeiro.
+Estudo ecológico longitudinal, com dados agregados das dez AP do município do Rio de Janeiro.
 
 ### Critérios de inclusão e exclusão
 
