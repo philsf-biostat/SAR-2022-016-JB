@@ -16,6 +16,16 @@ analytical <- analytical %>%
   # rotular nova variável
   set_variable_labels(tempo = "Tempo")
 
+r2 <- function(model, digits = 1) {
+  model %>%
+    glance() %>%
+    pull(adj.r.squared) %>%
+    style_percent(
+      digits = digits,
+      symbol = TRUE,
+    )
+}
+
 # raw estimate ------------------------------------------------------------
 
 m0 <- lm(internacoes ~ vacinacao * dose * tempo,
