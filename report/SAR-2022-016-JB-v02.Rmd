@@ -342,6 +342,9 @@ tab_mod %>%
   )
 ```
 
+Ao isolar o efeito da estrutura espacial e da estrutura etária na relação entre a vacinação contra COVID-19 e internação por SRAG, observamos que a estrutura etária parece ter um efeito modesto na estimativa enquanto a faixa etária a altera de forma mais pronunciada.
+Naturalmente ao controlar por ambas covariáveis a estimativa final é substancialmente diferente da estimativa inicial.
+
 A taxa de internações basal do modelo é 0,10, considerando a cobertura da dose 1 na AP 1.0 na faixa etária de 60 a 69 anos.
 Considerando esta referência basal, e a inclinação de 0,13 na cobertura vacinal, espera-se que a taxa internações por SRAG por 100 pessoas aumente em 0,23 para cada 1% de aumento da cobertura vacinal em um único mês em idosos de 60-69 anos.
 A cobertura da dose 2 está associada a uma média de internações semelhantes, mas ao considerar a cobertura da dose de reforço a taxa esperada de internações seria significativamente reduzida para 0,20 por 100.
