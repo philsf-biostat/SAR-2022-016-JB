@@ -355,12 +355,12 @@ tab_mod %>%
 Comparado ao modelo longitudinal inicial, o modelo que controla pela estrutura etária altera a estimativa de efeito longitudinal entre a vacinação contra COVID-19 e a internação por SRAG.
 O modelo que controla pela estrutura geográfica, apesar de não alterar este efeito de forma perceptível, se ajusta melhor aos dados, acrescentando poder de explicação do fenômeno mensurado pelo maior R2 ajustado.
 Ambas características evidenciam a relevância tanto da estrutura etária quanto da estrutura geográfica na interpretação da relação entre vacinação e das internações.
-O modelo final se beneficia de ambas estas características: ao controlar por estas variáveis o modelo apresenta simultaneamente uma estimativa mais próxima do modelo etário e com bondade de ajuste melhor que o modelo geográfico.
-Pode ser proposto que este modelo apresenta menor risco de viés e confundimnento que qualquer dos modelos acessórios considerados como referências de comparação nesta análise.
 
+O modelo final se beneficia de ambas estas características: ao controlar por estas variáveis o modelo apresenta simultaneamente uma estimativa mais próxima do modelo etário e com bondade de ajuste melhor que o modelo geográfico.
 Ao isolar o efeito da estrutura espacial e da estrutura etária na relação entre a vacinação contra COVID-19 e internação por SRAG, observamos que a estrutura etária parece ter um efeito modesto na estimativa enquanto a faixa etária a altera de forma mais pronunciada.
 Naturalmente ao controlar por ambas covariáveis a estimativa final é substancialmente diferente da estimativa inicial.
 Adicionalmente o R2 ajustado do modelo final é maior que o observado no modelo inicial, indicando melhor ajuste aos dados e maior poder de explicação.
+Pode ser proposto que este modelo apresenta menor risco de viés e confundimnento que qualquer dos modelos acessórios considerados como referências de comparação nesta análise.
 É importante lembrar que as internações sob análise não são exclusivamente de COVID-19, mas todas as SRAG.
 
 # Observações e limitações
