@@ -384,6 +384,15 @@ Recomenda-se que todos os estudos observacionais sigam o guideline STROBE (von E
 
 # Conclusões
 
+A cobertura vacinal contra COVID-19 está negativamente associada com a taxa de internações por SRAG no município do Rio de Janeiro ao longo de 2021.
+Considerando todas as etapas do esquema vacinal estima-se que cada 1% a mais na cobertura vacinal estava associada a uma redução de
+`r coef(m4)[2] %>% abs %>% fn` (por 100 habitantes)
+na taxa de internações
+(entre `r confint(m4)[2,1] %>% fn` e `r confint(m4)[2,2] %>% fn`).
+
+A heterogeneidade do fenômeno foi controlada pela subdivisão em faixas etárias e a pela estrutura geográfica da rede de atendimento primário de saúde.
+A estrutura etária da população idosa contribuiu com uma melhor estimativa da relação entre vacinação e internações enquanto as áreas programáticas contribuíram com um aumento na bondade de ajuste do modelo estatístico.
+
 # Referências
 
 - **SAP-2022-016-JB-v02** -- Plano Analítico para Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021
