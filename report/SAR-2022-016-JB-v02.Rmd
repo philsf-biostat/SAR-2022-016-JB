@@ -352,6 +352,10 @@ tab_mod %>%
   )
 ```
 
+Comparado ao modelo longitudinal inicial, o modelo que controla pela estrutura etária altera a estimativa de efeito longitudinal entre a vacinação contra COVID-19 e a internação por SRAG.
+O modelo que controla pela estrutura geográfica, apesar de não alterar este efeito de forma perceptível, se ajusta melhor aos dados, acrescentando poder de explicação do fenômeno mensurado pelo maior R2 ajustado.
+O modelo final se beneficia de ambas estas características.
+
 Ao isolar o efeito da estrutura espacial e da estrutura etária na relação entre a vacinação contra COVID-19 e internação por SRAG, observamos que a estrutura etária parece ter um efeito modesto na estimativa enquanto a faixa etária a altera de forma mais pronunciada.
 Naturalmente ao controlar por ambas covariáveis a estimativa final é substancialmente diferente da estimativa inicial.
 Adicionalmente o R2 ajustado do modelo final é maior que o observado no modelo inicial, indicando melhor ajuste aos dados e maior poder de explicação.
