@@ -261,11 +261,11 @@ entre outubro e novembro.
 knitr::include_graphics("../figures/f1.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[1, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-fracamente
-as ondas de internações por SRAG.
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[1, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- fracamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ### Idosos `r f2`
 
@@ -284,11 +284,11 @@ em outubro.
 knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[2, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-moderadamente
-as ondas de internações por SRAG.
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[2, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- moderadamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ### Idosos `r f3`
 
@@ -307,11 +307,11 @@ em setembro.
 knitr::include_graphics("../figures/f3.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[3, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-fracamente
-as ondas de internações por SRAG.
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[3, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- fracamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ## Relação entre internações por SRAG e vacinação contra COVID-19
 
