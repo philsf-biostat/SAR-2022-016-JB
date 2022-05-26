@@ -233,16 +233,8 @@ A amplitude da cobertura vacinal mensal nas APs variou entre
 e
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 ao longo do ano de 2021.
-A AP com maior cobertura vacinal em um único mês foi
-a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`,
-representando a cobertura vacinal de
-`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
-<!-- Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês. -->
 
-Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
-`r analytical %>% pull(vacinacao) %>% mean() %>% fn()`
-ao longo de 2021.
-<!-- As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções. -->
+As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções.
 
 ### Idosos `r f1`
 
@@ -260,6 +252,30 @@ entre outubro e novembro.
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f1.png", error = FALSE)
 ```
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
 
 <!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
 <!-- `r cvi[1, 2]`, -->
@@ -284,6 +300,30 @@ em outubro.
 knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```
 
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
 <!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
 <!-- `r cvi[2, 2]`, -->
 <!-- indicando que as ondas de esforço vacinal acompanharam -->
@@ -306,6 +346,30 @@ em setembro.
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/f3.png", error = FALSE)
 ```
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
 
 <!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
 <!-- `r cvi[3, 2]`, -->
