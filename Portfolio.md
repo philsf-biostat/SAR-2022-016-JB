@@ -1,6 +1,6 @@
 ---
 title: 'Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021'
-date: "2022-05-25"
+date: "2022-05-26"
 permalink: /portfolio/SAR-2022-016/
 redirect_from:
   - /portfolio/SAR-2022-016-JB/
