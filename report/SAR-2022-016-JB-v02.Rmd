@@ -58,7 +58,7 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 # Lista de abreviaturas
 
-- AIQ: Amplitude inter-quartil
+<!-- - AIQ: Amplitude inter-quartil -->
 - AP: Área programática
 - CV: Coeficiente de variação
 - DP: desvio padrão
