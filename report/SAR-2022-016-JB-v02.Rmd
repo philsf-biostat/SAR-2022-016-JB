@@ -237,7 +237,7 @@ A AP com maior cobertura vacinal em um único mês foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`,
 representando a cobertura vacinal de
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
-Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
+<!-- Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês. -->
 
 Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
 `r analytical %>% pull(vacinacao) %>% mean() %>% fn()`
