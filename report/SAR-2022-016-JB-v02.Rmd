@@ -228,7 +228,7 @@ Estas tendências de internação serão contrapostas com as curvas de cobertura
 
 ## Cobertura vacinal contra COVID-19
 
-A amplitude da vacinação nas APs variou entre
+A amplitude da cobertura vacinal mensal nas APs variou entre
 `r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 e
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
