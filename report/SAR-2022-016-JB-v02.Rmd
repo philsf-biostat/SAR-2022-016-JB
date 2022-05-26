@@ -233,7 +233,7 @@ A amplitude da vacinação nas APs variou entre
 e
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 ao longo do ano de 2021.
-A AP com maior número absoluto de vacinações aplicadas foi
+A AP com maior cobertura vacinal em um único mês foi
 a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`,
 representando a cobertura vacinal de
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
