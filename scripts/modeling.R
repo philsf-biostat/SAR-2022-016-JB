@@ -44,10 +44,10 @@ m4 <- lm(internacoes ~ vacinacao * dose * tempo + fe + ap_resid,
 
 # report table ------------------------------------------------------------
 
-m0_lab <- "Vacinação"
-m1_lab <- "Controlada por AP"
-m2_lab <- "Controlada por faixa etária"
-m3_lab <- "Controlada por etapa do esquema vacinal"
+m0_lab <- "Efeito longitudinal da vacinação"
+m1_lab <- "Efeito controlado por AP"
+m2_lab <- "Efeito controlado por faixa etária"
+m3_lab <- "Efeito controlado por etapa do esquema vacinal"
 m4_lab <- "Modelo final (completo)"
 
 # tab_mod <- tbl_stack(list(

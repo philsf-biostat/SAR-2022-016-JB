@@ -2,7 +2,7 @@
 title: "Associação entre vacinação de COVID-19 e internações por SRAG em idosos nas áreas programáticas do Rio de Janeiro/RJ em 2021"
 subtitle: 'DOCUMENTO: SAR-2022-016-JB-v02'
 author: '**De:** Felipe Figueiredo **Para:** Janaina Balmant'
-date: "2022-05-17"
+date: "2022-05-26"
 output:
   html_document:
     fig_caption: yes
@@ -58,7 +58,7 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 # Lista de abreviaturas
 
-- AIQ: Amplitude inter-quartil
+<!-- - AIQ: Amplitude inter-quartil -->
 - AP: Área programática
 - CV: Coeficiente de variação
 - DP: desvio padrão
@@ -228,21 +228,13 @@ Estas tendências de internação serão contrapostas com as curvas de cobertura
 
 ## Cobertura vacinal contra COVID-19
 
-A amplitude da vacinação nas APs variou entre
+A amplitude da cobertura vacinal mensal nas APs variou entre
 `r analytical %>% slice_min(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 e
 `r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()`
 ao longo do ano de 2021.
-A AP com maior número absoluto de vacinações aplicadas foi
-a AP `r analytical %>% slice_max(vacinacao) %>% pull(ap_resid)`,
-representando a cobertura vacinal de
-`r analytical %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
-Com exceção da AP 2.1 todas as outras nove AP registraram zero aplicações de vacinas em pelo menos um mês.
 
-Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
-`r analytical %>% pull(vacinacao) %>% mean() %>% fn()`
-ao longo de 2021.
-<!-- As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções. -->
+As tendências das curvas de cobertura vacinal mensal e a associação com os números de internações por SRAG serão explorados nas próximas seções.
 
 ### Idosos `r f1`
 
@@ -261,11 +253,35 @@ entre outubro e novembro.
 knitr::include_graphics("../figures/f1.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[1, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-fracamente
-as ondas de internações por SRAG.
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f1, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f1, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f1, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[1, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- fracamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ### Idosos `r f2`
 
@@ -284,11 +300,35 @@ em outubro.
 knitr::include_graphics("../figures/f2.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[2, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-moderadamente
-as ondas de internações por SRAG.
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f2, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f2, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f2, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[2, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- moderadamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ### Idosos `r f3`
 
@@ -307,11 +347,35 @@ em setembro.
 knitr::include_graphics("../figures/f3.png", error = FALSE)
 ```
 
-No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi
-`r cvi[3, 2]`,
-indicando que as ondas de esforço vacinal acompanharam
-fracamente
-as ondas de internações por SRAG.
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d1)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "d1") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "d1") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "d1") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(d2)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "d2") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "d2") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "d2") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+A AP com maior cobertura vacinal em um único mês para a `r str_to_lower(dr)` foi
+a AP `r analytical %>% filter(fe == f3, dose == "dr") %>% slice_max(vacinacao) %>% pull(ap_resid)`,
+representando a cobertura vacinal de
+`r analytical %>% filter(fe == f3, dose == "dr") %>% slice_max(vacinacao) %>% pull(vacinacao) %>% unique() %>% fn()` em sua população de idosos.
+Ao todo, o município do Rio de Janeiro observou uma cobertura vacinal mensal média de
+`r analytical %>% filter(fe == f3, dose == "dr") %>% pull(vacinacao) %>% mean() %>% fn()`
+ao longo de 2021.
+
+<!-- No município do Rio de Janeiro a correlação entre a cobertura vacinal do esquema completo (dose 2 ou dose única) e a taxa de internações foi -->
+<!-- `r cvi[3, 2]`, -->
+<!-- indicando que as ondas de esforço vacinal acompanharam -->
+<!-- fracamente -->
+<!-- as ondas de internações por SRAG. -->
 
 ## Relação entre internações por SRAG e vacinação contra COVID-19
 
@@ -338,7 +402,7 @@ O R2 ajustado do modelo geográfico é
 e que o R2 ajustado do modelo etário é
 `r m2 %>% r2`.
 
-O modelo final incorpora a estrutura longidutinal do esforço vacinal, controlando pelas estruturas geográfica e etária dos idosos.
+O modelo final incorpora a estrutura longitudinal do esforço vacinal, controlando pelas estruturas geográfica e etária das populações idosas.
 A inclinação da cobertura vacinal neste modelo é
 `r coef(m4)[2] %>% fn` (entre `r confint(m4)[2,1] %>% fn` e `r confint(m4)[2,2] %>% fn`).
 Este modelo explica
@@ -352,9 +416,15 @@ tab_mod %>%
   )
 ```
 
+Comparado ao modelo longitudinal inicial, o modelo que controla pela estrutura etária altera a estimativa de efeito longitudinal entre a vacinação contra COVID-19 e a internação por SRAG.
+O modelo que controla pela estrutura geográfica, apesar de não alterar este efeito de forma perceptível, se ajusta melhor aos dados, acrescentando poder de explicação do fenômeno mensurado pelo maior R2 ajustado.
+Ambas características evidenciam a relevância tanto da estrutura etária quanto da estrutura geográfica na interpretação da relação entre vacinação e das internações.
+
+O modelo final se beneficia de ambas estas características: ao controlar por estas variáveis o modelo apresenta simultaneamente uma estimativa mais próxima do modelo etário e com bondade de ajuste melhor que o modelo geográfico.
 Ao isolar o efeito da estrutura espacial e da estrutura etária na relação entre a vacinação contra COVID-19 e internação por SRAG, observamos que a estrutura etária parece ter um efeito modesto na estimativa enquanto a faixa etária a altera de forma mais pronunciada.
 Naturalmente ao controlar por ambas covariáveis a estimativa final é substancialmente diferente da estimativa inicial.
 Adicionalmente o R2 ajustado do modelo final é maior que o observado no modelo inicial, indicando melhor ajuste aos dados e maior poder de explicação.
+Pode ser proposto que este modelo apresenta menor risco de viés e confundimnento que qualquer dos modelos acessórios considerados como referências de comparação nesta análise.
 É importante lembrar que as internações sob análise não são exclusivamente de COVID-19, mas todas as SRAG.
 
 # Observações e limitações
@@ -377,6 +447,15 @@ A adoção dos guidelines de relato da rede EQUATOR (<http://www.equator-network
 Recomenda-se que todos os estudos observacionais sigam o guideline STROBE (von Elm et al, 2014).
 
 # Conclusões
+
+A cobertura vacinal contra COVID-19 está negativamente associada com a taxa de internações por SRAG no município do Rio de Janeiro ao longo de 2021.
+Considerando todas as etapas do esquema vacinal estima-se que cada 1% a mais na cobertura vacinal estava associada a uma redução de
+`r coef(m4)[2] %>% abs %>% fn` (por 100 habitantes)
+na taxa de internações
+(entre `r confint(m4)[2,1] %>% fn` e `r confint(m4)[2,2] %>% fn`).
+
+A heterogeneidade do fenômeno foi controlada pela subdivisão em faixas etárias e a pela estrutura geográfica da rede de atendimento primário de saúde.
+A estrutura etária da população idosa contribuiu com uma melhor estimativa da relação entre vacinação e internações enquanto as áreas programáticas contribuíram com um aumento na bondade de ajuste do modelo estatístico.
 
 # Referências
 
@@ -434,7 +513,7 @@ na AP 1.0
 na ausência de vacinação no mês de janeiro.
 Considerando esta referência basal, e a inclinação de
 `r coef(m4)[2] %>% fn`
-na cobertura vacinal, a taxa internaçõespor SRAG por 100 pessoas esperada seja
+na cobertura vacinal, a taxa esperada de internações por SRAG por 100 pessoas seja
 `r pred[1] %>% fn(3)`
 com 1% de cobertura vacinal naquele mês na população de 60-69 anos da AP 1.0 e 
 `r pred[2] %>% fn(3)`
