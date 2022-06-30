@@ -44,7 +44,7 @@ gg.f1 <- analytical %>%
   ggplot(aes(x = mes)) +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   scale_color_brewer(palette = "Blues") +
-  labs(subtitle = f1, color = NULL, x = "") +
+  labs(subtitle = f1, color = NULL, x = "", linetype = "") +
   xlim(range(analytical$mes)) +
   scale_y_continuous(
     # primeiro eixo
@@ -53,7 +53,7 @@ gg.f1 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = internacoes/1, linetype = "Internações"), color = "firebrick4", lwd = lwd) +
   geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
   theme_ff()
 
@@ -64,7 +64,7 @@ gg.f2 <- analytical %>%
   ggplot(aes(x = mes)) +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   scale_color_brewer(palette = "Blues") +
-  labs(subtitle = f2, color = NULL, x = "") +
+  labs(subtitle = f2, color = NULL, x = "", linetype = "") +
   xlim(range(analytical$mes)) +
   scale_y_continuous(
     # primeiro eixo
@@ -73,7 +73,7 @@ gg.f2 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = internacoes/1, linetype = "Internações"), color = "firebrick4", lwd = lwd) +
   geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
   theme_ff()
 
@@ -84,7 +84,7 @@ gg.f3 <- analytical %>%
   ggplot(aes(x = mes)) +
   facet_wrap(~ ap_resid, ncol = facetcol) +
   scale_color_brewer(palette = "Blues") +
-  labs(subtitle = f3, color = NULL, x = "") +
+  labs(subtitle = f3, color = NULL, x = "", linetype = "") +
   xlim(range(analytical$mes)) +
   scale_y_continuous(
     # primeiro eixo
@@ -93,7 +93,7 @@ gg.f3 <- analytical %>%
     # segundo eixo
     sec.axis = sec_axis(~.*1, name = attr(analytical$internacoes, "label"),)
   ) +
-  geom_line(aes(y = internacoes/1), color = "firebrick4", lwd = lwd) +
+  geom_line(aes(y = internacoes/1, linetype = "Internações"), color = "firebrick4", lwd = lwd) +
   geom_line(aes(y = vacinacao, color = dose), lwd = lwd, alpha = .95) +
   theme_ff()
 
